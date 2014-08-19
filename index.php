@@ -12,5 +12,5 @@
 	require_once("engine/init.php");
 	ob_get_contents();
 
-
+	echo 1;
 ?>
