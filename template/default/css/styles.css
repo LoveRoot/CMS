@@ -53,11 +53,18 @@ article, section, header, aside {
 }
 
 #content {
-	width:1170px;
-	margin:0 auto;
+	margin:0 200px 0 300px;
+	padding:20px;
 }
 
 #footer {
 	background-color:#86c8b4;
 	min-height:270px;
+}
+
+#leftcol {
+	width:270px;
+	float:left;
+	padding:20px;
+
 }

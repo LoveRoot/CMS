@@ -1,2 +1,10 @@
 <Form name="authorize" action="">
+	<section class="row">
+			<input type="text" name="login" value="<?=isset($_POST["login"]) ? $_POST["login"] : ""?>" placeholder="Имя пользователя" />
+	</section>
+	<section class="row">
+			<input type="password" name="password" value="" placeholder="Пароль" />
+			<input type="submit" value="Войти" />
+	</section>
+
 </Form>
