@@ -8,3 +8,24 @@
     width: 100%;
     z-index: 99999;
 }
+#system_message_error span {
+    float:left;
+    width:90%;
+}
+
+#system_message_error span#close {
+    float: right;
+    margin: 0 45px 0 0;
+    width: auto;
+    cursor:pointer;
+}
+
+#system_message_error span#close:after {
+    content:"X";
+    float:right;
+    width:16px;
+    height:16px;
+    font-size:120%;
+   
+}
+

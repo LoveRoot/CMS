@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><?=$title;?></title>
-    <meta name="description" content="<?=!empty($description) ? $description : ""?>" />
-    <meta name="keywords" content="<?=!empty($keywords) ? $keywords : ""?>" />
-    <link rel="stylesheet" type="text/css" href="template/default/css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="engine/style.css" />
-    
-    <meta charset="UTF-8">
-  </head>
-  <body>
-      <section id="wrapper">
-	          <section id="top">
-              <header>
-									<?php include "template/default/top/top.phtml" ?>
-              </header>
-          </section>
+    <head>
+        <title><?= $title; ?></title>
+        <meta name="description" content="<?= !empty($description) ? $description : "" ?>" />
+        <meta name="keywords" content="<?= !empty($keywords) ? $keywords : "" ?>" />
+        <link rel="stylesheet" type="text/css" href="template/default/css/styles.css" />
+        [include="engine/head.phtml"]       
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <section id="wrapper">
+            <section id="top">
+                <header>
+                    <?php include "template/default/top/top.phtml" ?>
+                </header>
+            </section>
 
-          <section id="leftcol">
-              <aside>
-									<section class="box lightblue">
-											[include="modules/authorize.php"]
-									</section>
-              </aside>
-          </section>
+            <section id="leftcol">
+                <aside>
+                    <section class="box lightblue">
+                        [include="modules/authorize.php"]
+                    </section>
+                </aside>
+            </section>
 
-					<section id="content">
-              <?php include "template/default/".$content_view; ?>
-          </section>
+            <section id="content">
+                <?php include "template/default/".$content_view; ?>
+            </section>
 
-          <section id="bottom">
-              <footer>
-									[include="template/default/bottom/bottom.phtml"]
-              </footer>
-          </section>
-      </section>
-  </body>
+            <section id="bottom">
+                <footer>
+                    <?php include "template/default/bottom/bottom.phtml" ?>
+                </footer>
+            </section>
+        </section>
+    </body>
 </html>
