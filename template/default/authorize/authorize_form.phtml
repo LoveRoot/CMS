@@ -1,10 +1,15 @@
-<Form name="authorize" action="">
-	<section class="row">
-			<input type="text" name="login" value="<?=isset($_POST["login"]) ? $_POST["login"] : ""?>" placeholder="Имя пользователя" />
-	</section>
-	<section class="row">
-			<input type="password" name="password" value="" placeholder="Пароль" />
-			<input type="submit" value="Войти" />
-	</section>
+<section id="authorize">
+		<header>
+			<h2>Авторизация</h2>
+		</header>
 
-</Form>
+		<Form name="authorize" action="" method="POST">
+			<section class="row">
+					<input type="text" name="login" value="<?=isset($_POST["login"]) ? $_POST["login"] : ""?>" placeholder="Имя пользователя" />
+			</section>
+			<section class="row">
+					<input type="password" name="password" value="" placeholder="Пароль" />
+					<input type="submit" value="Войти" name="authorize" />
+			</section>
+		</Form>
+</section>

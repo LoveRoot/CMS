@@ -4,6 +4,7 @@ html, body {
 	height:100%;
 	padding:0;
 	margin:0;
+	color:#a1a0a0;
 }
 
 a {
@@ -11,8 +12,22 @@ a {
 	text-decoration:none;
 }
 
+.box {
+	border-bottom:2px solid #fff;
+	padding:10px;
+}
+
+.box.red {
+	background:red;
+}
+
+.box.lightblue {
+	background:lightblue;
+}
+
 h1, h2, h3 {
 	margin:0 0 6px;
+	color:#908b8b;
 }
 
 article, section, header, aside {
@@ -54,7 +69,7 @@ article, section, header, aside {
 
 #content {
 	margin:0 200px 0 300px;
-	padding:20px;
+	padding:0 10px;
 }
 
 #footer {
@@ -65,6 +80,21 @@ article, section, header, aside {
 #leftcol {
 	width:270px;
 	float:left;
-	padding:20px;
+}
 
+.row {
+	margin:0 0 6px;
+}
+
+.row input[type="text"], .row input[type="password"] {
+	padding:4px;
+	border:1px solid #e3e2e2;
+}
+
+#authorize a {
+	color:#fff;
+}
+
+#authorize header h1, #authorize header h2, #authorize header h3 {
+	font-size:120%;
 }

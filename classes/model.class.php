@@ -61,6 +61,14 @@
             echo $error;
         }
 
+				/*
+				 * Собрать URL
+				 */
+
+				public static function CombineUrl($id) {
+
+				}
+
         /* Настройки сайта
          *
          */
