@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><?=$data['title'];?></title>
+    <meta name="description" content="<?=!empty($data['description']) ? $data['description'] : ""?>" />
+    <meta name="keywords" content="<?=!empty($data['keywords']) ? $data['keywords'] : ""?>" />
+    <link rel="stylesheet" type="text/css" href="template/default/css/styles.css" />
+    <meta charset="UTF-8">
+  </head>
+  <body>
+      <section id="wrapper">
+          <section id="top">
+              <header>
+									[include="template/default/top/top.phtml"]
+              </header>
+          </section>
+
+          <section id="leftcol">
+              <aside>
+                  <section id="authorize">
+											[include="engine/authorize.php"]
+                  </section>
+              </aside>
+          </section>
+
+          <section id="content">
+              <?php include "template/default/".$content_view; ?>
+          </section>
+
+          <section id="bottom">
+              <footer>
+									[include="template/default/bottom/bottom.phtml"]
+              </footer>
+          </section>
+      </section>
+  </body>
+</html>
