@@ -1,0 +1,7 @@
+Файл создан:	19-08-2014
+
+19-08-2014
+Ошибка:	Unknown column 'groups.id' in 'where clause'
+Файл:	Z:\home\192.168.1.151\www\classes/Z:\home\192.168.1.151\www\classes\model.class.php
+Строка:	91
+

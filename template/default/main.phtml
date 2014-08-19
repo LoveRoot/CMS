@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><?=$data['title'];?></title>
-    <meta name="description" content="<?=!empty($data['description']) ? $data['description'] : ""?>" />
-    <meta name="keywords" content="<?=!empty($data['keywords']) ? $data['keywords'] : ""?>" />
+    <title><?=$title;?></title>
+    <meta name="description" content="<?=!empty($description) ? $description : ""?>" />
+    <meta name="keywords" content="<?=!empty($keywords) ? $keywords : ""?>" />
     <link rel="stylesheet" type="text/css" href="template/default/css/styles.css" />
     <meta charset="UTF-8">
   </head>
   <body>
       <section id="wrapper">
-          <section id="top">
+	          <section id="top">
               <header>
-									[include="template/default/top/top.phtml"]
+									<?php include "template/default/top/top.phtml" ?>
               </header>
           </section>
 

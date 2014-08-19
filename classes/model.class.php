@@ -36,9 +36,9 @@
          *
          */
 
-        private function MysqliCriticalError($string, $file = "", $line_str = "") {
+        private static function MysqliCriticalError($string, $file = "", $line_str = "") {
 
-            if (mkdir($_SERVER["DOCUMENT_ROOT"] . "/logs")) {
+            if (@mkdir($_SERVER["DOCUMENT_ROOT"] . "/logs")) {
 
                 $log_dir = $_SERVER["DOCUMENT_ROOT"] . "/logs/err_logs.txt";
 
@@ -53,12 +53,9 @@
                     fwrite($fp, date("d-m-Y") . "\n" . "Ошибка:\t" . $string . "\n" . "Файл:\t" . $file . "\n" . "Строка:\t" . $line_str . "\n\n");
                     fclose($fp);
                 }
-            } else {
-                $error = core::I()->GetTemplate("SystemMessage", array("message" => "Папка logs небыла создана"));
             }
 
-            $error = core::I()->GetTemplate("SystemMessage", array("message" => "Произошла критическая ошибка при запросе к базе данных:&nbsp;" . $string));
-            echo $error;
+            core::GetSystemError("Произошла критическая ошибка при запросе к базе данных:&nbsp;".$string);
         }
 
 				/*
@@ -88,7 +85,7 @@
             if (self::$query == true && !mysqli_error(self::$link)) {
                 return self::$result = mysqli_fetch_assoc(self::$query);
             } else {
-                $this->MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
+                self::MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
             }
         }
 

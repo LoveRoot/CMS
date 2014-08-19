@@ -12,6 +12,10 @@ a {
 	text-decoration:none;
 }
 
+p {
+	margin:0 0 4px;
+}
+
 .box {
 	border-bottom:2px solid #fff;
 	padding:10px;

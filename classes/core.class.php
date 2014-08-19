@@ -39,6 +39,18 @@ class core {
         }
     }
 
+		/*
+		 * Системное сообщение об ошибке
+		 */
+
+		public static function GetSystemError($string) {
+			echo "<section id='system_message_error'>{$string}</section>";
+		}
+
+		/*
+		 * Очистка входных данных типа string
+		 */
+
 		public static function Vanish($string="") {
        return addslashes(htmlspecialchars($string));
     }

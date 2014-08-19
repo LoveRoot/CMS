@@ -19,6 +19,6 @@
     }
 
 		$obj = core::GetFactory("controllers/","controller_main");
-        $obj->index_action();
+    $obj->index_action();
 
 ?>

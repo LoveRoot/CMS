@@ -8,7 +8,7 @@
 				$login = core::Vanish($_POST["login"]);
 				$password = md5($_POST["password"]);
 
-				$data["users"] = $this->model_authorize->GetAuthorize($login, $password);
+				$this->model_authorize->GetAuthorize($login, $password);
 			}
 
 			if (isset($_GET["do"]) && $_GET["do"] == "logout") {
@@ -16,11 +16,12 @@
 			}
 		}
 
-		public function index_action() {
+		public function index_action(&$data="") {
 			if ((!isset($_COOKIE["user"]))) {
 				$this->view->GetTemplate("main.phtml","authorize/authorize_form.phtml");
 			}	else {
-				$this->view->GetTemplate("main.phtml","authorize/authorize_success.phtml");
+				$data['user'] = $this->model_authorize->GetUserInfo($_COOKIE["user"]);
+				$this->view->GetTemplate("main.phtml","authorize/authorize_success.phtml", $data);
 			}
 		}
 

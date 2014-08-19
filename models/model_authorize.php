@@ -22,12 +22,19 @@
 					header("Location: ".$_SERVER["HTTP_REFERER"]);
 				}
 
+				public function GetUserInfo($usr) {
+						return Model::QueryString("SELECT groups.name, groups.permissions, users.login FROM users, groups
+                                              where
+																							groups.id = users.groups and
+																							users.login='{$usr}'");
+				}
+
 				public function GetAuthorize($login="", $password="") {
 						$salt = Model::SelectItems("users", array("salt"), "login='".$login."'");
             $hash = crypt($_POST["password"], $salt["salt"]);
 
 						$result = Model::SelectItems("users", array("*"),"login='{$login}' and password='{$hash}'");
-
+						core::PrintPre($result);
 						if ($result == true) {
 							if ($result["status"] == 1) {
 								$this->AuthorizeSuccess($result);
