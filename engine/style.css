@@ -1,0 +1,10 @@
+#system_message_error {
+    background:lightyellow;
+    left: 0;
+    overflow: hidden;
+    padding: 8px 0px 8px 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
