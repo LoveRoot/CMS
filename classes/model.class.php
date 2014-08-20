@@ -18,18 +18,25 @@
             return self::$instance;
         }
 
-        private static function DBCONNECT() {
-            self::$link = mysqli_connect(self::Config("HOST"), /* Адрес базы */ self::Config("DBLOGIN"), /* Имя пользователя */ self::Config("DBPASS"), /* Пароль от базы */ self::Config("DBNAME")); /* Имя базы */
+        private static function DBCONNECT(&$error="") {
+						try {
+							self::$link = @mysqli_connect(self::Config("HOST"), /* Адрес базы */ self::Config("DBLOGIN"), /* Имя пользователя */ self::Config("DBPASS"), /* Пароль от базы */ self::Config("DBNAME")); /* Имя базы */
 
-            if (mysqli_connect_errno())
-                $this->MysqliCriticalError("Ошибка при подключении к базе данных&nbsp;" . $this->Config("DBNAME"));
+            if (!self::$link) {
+								throw new Exception("Ошибка при подключении к базе данных&nbsp;".self::Config("DBNAME")."<br />Возможно вы неверно указали сведения о базе данных в файле engine/mysql_config.ini");
+						}
 
             self::$select_db = mysqli_select_db(self::$link, self::Config("DBNAME"));
 
-            if (!self::$select_db)
-                $this->MysqliCriticalError("Ошибка при выборе базы данных&nbsp;" . $this->Config("DBNAME"), __FILE__, __LINE__);
+            if (!self::$select_db) {
+							throw new Exception("Ошибка при выборе базы данных&nbsp;".self::Config("DBNAME"));
+						}
 
             mysqli_set_charset(self::$link, "utf8");
+						} catch (Exception $e) {
+							self::MysqliCriticalError($e->getMessage(),$e->getFile(),$e->getLine());
+						}
+
         }
 
         /* Обработка критических ошибок
@@ -62,8 +69,13 @@
 				 * Собрать URL
 				 */
 
-				public static function CombineUrl($id) {
+				public static function CombineUrl($module="",$action="", $param = array()) {
+					if (empty($module))
+						$module = "main";
+					if (empty($action))
+						$module = "index";
 
+					return "/{$module}/{$action}/{$param['id']}";
 				}
 
         /* Настройки сайта
@@ -109,7 +121,7 @@
                                                          Values(" . $val . ")");
 
             if (self::$query == false) {
-                $this->MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
+                self::MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
             } else {
                 return mysqli_insert_id(self::$link);
             }
@@ -140,7 +152,7 @@
                 return 0;
 
             if (self::$query == false) {
-                $this->MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
+                self::MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
             }
         }
 
@@ -150,7 +162,7 @@
             return self::$query;
 
             if (self::$query == false) {
-                $this->MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
+                self::MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
             }
         }
 
@@ -170,7 +182,7 @@
             return self::$query = mysqli_query(self::$link, "Update $table set $row where $where");
 
             if (self::$query == false) {
-                $this->MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
+                self::MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
             }
         }
 

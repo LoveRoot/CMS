@@ -3,18 +3,21 @@
     {
         public function __construct() {
             parent::__construct();
-						$this->model_content = core::GetFactory("models/", "model_main");
+						$this->model = new model_main();
         }
 
-        public function index_action(&$data="")
+        public function index_action(&$data =  array())
         {
-					 $data['title'] = core::Config("title");
-					 $data['description'] = core::Config('description');
-					 $data['keywords'] = core::Config('keywords');
-					 
-					 $data['item'] = $this->model_content->GetContent(1);
+					 $id = isset($_GET["id"]) ? intval($_GET["id"]) : 1;
 
-           $this->view->GetTemplate('index_content.phtml', 'main.phtml', $data);
+					 $data['item'] = $this->model->GetContent($id);
+
+					 $data['title'] = empty($data['item']['seotitle']) ? $data['item']['title'] : core::Config("title");
+					 $data['description'] = !empty($data['item']['description']) ? $data['item']['description'] : core::Config('description');
+					 $data['keywords'] = !empty($data['item']['keywords']) ? $data['item']['keywords'] : core::Config('keywords');
+
+					 $this->view->GetTemplate('index_content.phtml', 'main.phtml', $data);
+
         }
     }
 ?>

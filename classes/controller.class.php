@@ -4,9 +4,9 @@
     {
         public $model;
         public $view;
-        
+
         public function __construct() {
-            $this->view = View::I();
+					 $this->view = View::I();
         }
     }
-?>    
+?>

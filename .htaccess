@@ -1,0 +1,19 @@
+DirectoryIndex index.php
+ErrorDocument 404 /?error=404
+php_value error_reporting 7
+php_value post_max_size 200M
+php_value upload_max_filesize 200M
+
+RewriteEngine on
+RewriteBase /
+RewriteRule ^admin/([^/]*)/?$ /admin.php [L]
+RewriteRule ^tags/([^/]*)/?$ /?model=tags&content=$1 [L]
+RewriteRule ^addnews.html/?$ /?model=addnews [L]
+RewriteRule ^feedback.html/?$ /?model=feedback [L]
+RewriteRule ^register.html/?$ /?model=register [L]
+RewriteRule ^([A-Za-z0-9-_]+).html/?$ /index.php?content=$1 [QSA,L]
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+
+RewriteRule ^.*$ index.php [L]

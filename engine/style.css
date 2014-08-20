@@ -7,6 +7,7 @@
     top: 0;
     width: 100%;
     z-index: 99999;
+		border-bottom:1px solid #000000;
 }
 #system_message_error span {
     float:left;
@@ -18,14 +19,15 @@
     margin: 0 45px 0 0;
     width: auto;
     cursor:pointer;
+		float:right;
+    font-size:120%;
+		text-align:center;
 }
 
-#system_message_error span#close:after {
-    content:"X";
-    float:right;
-    width:16px;
-    height:16px;
-    font-size:120%;
-   
+#system_message_error span#close a {
+	background:url("/engine/images/close_small.png") no-repeat left center;
+	display:block;
+	width:24px;
+  height:24px;
 }
 

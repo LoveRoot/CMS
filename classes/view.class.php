@@ -14,9 +14,8 @@
             return self::$instance;
         }
 
-        public function GetTemplate($content_view, $template_view, $data = null)
+        public function GetTemplate($content_view, $template_view, $data = array())
         {
-
             if (is_array($data))
             {
                 // преобразуем элементы массива в переменные
@@ -26,7 +25,7 @@
             if (file_exists("template/" . core::Config("template") . "/" . $template_view))
             {
                 ob_start();
-                $include = require "template/" . core::Config("template") . "/" . $template_view;
+                $include = require "template/".core::Config("template")."/". $template_view;
                 $include = ob_get_clean();
 
                 preg_match_all('/\[include="(.*?)"/', $include, $ext[]);
@@ -50,17 +49,17 @@
 
         private function __construct()
         {
-            
+
         }
 
         private function __wakeup()
         {
-            
+
         }
 
         private function __clone()
         {
-            
+
         }
 
     }

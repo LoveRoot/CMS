@@ -52,7 +52,7 @@
 
         public static function GetSystemError($string)
         {
-            echo "<section id='system_message_error'><span>{$string}</span><span id='close'></span></section>";
+            echo "<section id='system_message_error'><span>{$string}</span><span id='close'><a href=\"javascript:close('#system_message_error')\";></a></span></section>";
         }
 
         /*
@@ -87,17 +87,17 @@
 
         private function __construct()
         {
-            
+
         }
 
         private function __wakeup()
         {
-            
+
         }
 
         private function __clone()
         {
-            
+
         }
 
     }
