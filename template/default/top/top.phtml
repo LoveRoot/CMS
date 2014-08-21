@@ -2,14 +2,7 @@
 		<header>
 				<h1><a href="/">Назване сайта</a></h1>
 		</header>
-
-		<nav id="navigation-top">
-				<ul>
-						<li><a href="/" class="active">Главная</a></li>
-						<li><a href="<?=Model::CombineUrl('article','index', array('id' => 21))?>">Новости</a></li>
-						<li><a href="/">О сайте</a></li>
-						<li><a href="/">Написать нам</a></li>
-				</ul>
-		</nav>
-
+		<section class="navigation">
+				[include="modules/navigation.php"]
+		</section>
 </section>

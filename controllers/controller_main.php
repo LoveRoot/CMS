@@ -10,13 +10,14 @@
         {
 					 $id = isset($_GET["id"]) ? intval($_GET["id"]) : 1;
 
-					 $data['item'] = $this->model->GetContent($id);
+					 $this->data['item'] = $this->model->GetContent($id);
 
-					 $data['title'] = empty($data['item']['seotitle']) ? $data['item']['title'] : core::Config("title");
-					 $data['description'] = !empty($data['item']['description']) ? $data['item']['description'] : core::Config('description');
-					 $data['keywords'] = !empty($data['item']['keywords']) ? $data['item']['keywords'] : core::Config('keywords');
+					 if ($_SERVER["REQUEST_URI"] == "/") {
+						  $this->view->GetTemplate('index_content.phtml', 'main.phtml', $this->data);
+					 }	else {
+						  $this->view->GetTemplate('', 'main.phtml', $this->data);
+					 }
 
-					 $this->view->GetTemplate('index_content.phtml', 'main.phtml', $data);
 
         }
     }

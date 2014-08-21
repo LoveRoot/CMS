@@ -75,7 +75,12 @@
 					if (empty($action))
 						$module = "index";
 
-					return "/{$module}/{$action}/{$param['id']}";
+					if($module == "main" && $action == "index") {
+						return "/";
+					}	else {
+						return "/{$module}/{$action}/{$param['id']}";
+					}
+
 				}
 
         /* Настройки сайта

@@ -6,6 +6,7 @@
 		}
 
 		public function index_action() {
-			core::PrintPre(1);
+			$this->data['title'] = "Ошибка: Страница не найдена Page 404 NotFound";
+			$this->view->GetTemplate("404.phtml","main.phtml", $this->data);
 		}
 	}

@@ -1,0 +1,15 @@
+<nav id="navigation-top">
+	<ul>
+		<li>
+			<a href="/" class="<?= isset($page["id"]) && $page["id"] == 1 ? "active" : "" ?>">Главная</a>
+		</li>
+
+		<li>
+			<a href="<?= Model::CombineUrl('article', 'index', array('id' => 21)) ?>" class="<?= isset($page["id"]) && $page["id"] == 21 ? "active" : "" ?>">Новости</a>
+		</li>
+
+		<li><a href="/">О сайте</a></li>
+		<li><a href="/">Написать нам</a></li>
+	</ul>
+</nav>
+

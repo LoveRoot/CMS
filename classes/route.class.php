@@ -33,6 +33,11 @@
             $action_name = $routes[2];
         }
 
+				if ( !empty($routes[3]) )
+        {
+            $_GET["id"] = $routes[3];
+        }
+
         // добавляем префиксы
         $model_name = 'model_'.$controller_name;
         $controller_name = 'controller_'.$controller_name;

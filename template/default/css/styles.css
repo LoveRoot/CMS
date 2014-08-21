@@ -102,3 +102,7 @@ article, section, header, aside {
 #authorize header h1, #authorize header h2, #authorize header h3 {
 	font-size:120%;
 }
+
+.news-block {
+	margin:0 0 20px;
+}
