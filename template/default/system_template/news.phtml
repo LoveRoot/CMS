@@ -1,14 +1,16 @@
 <article>
-		<? do { ?>
-						<section class="news-block">
-								<section class="news-head">
-										<header>
-												<h2><?=$news->result["a_title"]?></h2>
-										</header>
-								</section>
-								<section class="news-text"><?=$news->result["shortnews"]?></section>
-								<section class="read-full"><a href="<?=Model::CombineUrl("article", "fullnews", array("id" => $news->result["id"], "table" => "article"))?>">Читать полностью</a></section>
-						</section>
-		<?	}	while($news->result = mysqli_fetch_assoc($news->sql));?>
+    <?php do
+            {
+            ?>
+            <section class="news-block">
+                <section class="news-head">
+                    <header>
+                        <h2><?= $news->result["a_title"] ?></h2>
+                    </header>
+                </section>
+                <section class="news-text"><?= $news->result["shortnews"] ?></section>
+                <section class="read-full"><a href="<?= Model::CombineUrl("article", "fullnews", array("id" => $news->result["id"], "table" => "article")) ?>">Читать полностью</a></section>
+            </section>
+    <?php } while ($news->result = mysqli_fetch_assoc($news->sql)); ?>
 </article>
 

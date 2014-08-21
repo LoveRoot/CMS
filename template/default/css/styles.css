@@ -68,7 +68,7 @@ article, section, header, aside {
 }
 
 #wrapper {
-	min-height:100%;
+	min-height:71%;
 }
 
 #content {
@@ -78,7 +78,7 @@ article, section, header, aside {
 
 #footer {
 	background-color:#86c8b4;
-	min-height:270px;
+	height:270px;
 }
 
 #leftcol {
