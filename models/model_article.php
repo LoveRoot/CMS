@@ -7,7 +7,12 @@
         {
             
         }
-
+        
+        public function ReadNews($id=0) {
+            $result = $this->SelectItems("article", array("*"), "id='".intval($id)."'");
+            return $result;
+        }
+        
         public function GetShortNews($p_id)
         {
             $result = new Pagination("Select a.id, a.title as a_title, a.link, a.author, a.date,

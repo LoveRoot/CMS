@@ -1,11 +1,17 @@
 <nav id="navigation-top">
-		<ul>
-			<?php foreach($nav as $i => $value) { ?>
-				<?php foreach($nav[$i] as $value) { ?>
-						<?php if ($value["p_id"] == 0) { ?>
-								<li><a href="<?=Model::CombineUrl($value["type"], "index", array("id" => $value["id"]))?>" class="<?=isset($page["id"]) && $page["id"] == $value["id"] ? "active" : "" ?>"><?=$value["title"]?></a></li>
-						<?php } ?>
-				<?php } ?>
-			<?php } ?>
-		</ul>
+    <ul>
+        <?php foreach ($nav as $i => $value)
+            {
+                ?>
+                <?php foreach ($nav[$i] as $value)
+                {
+                    ?>
+                    <?php if ($value["p_id"] == 0)
+                    {
+                        ?>
+                        <li><a href="<?= Model::CombineUrl($value["type"], "index", array("id" => $value["id"])) ?>" class="<?= isset($page["id"]) && $page["id"] == $value["id"] || isset($page["p_id"]) && $page["p_id"] == $value["id"] ? "active" : "" ?>"><?= $value["title"] ?></a></li>
+            <?php } ?>
+        <?php } ?>
+    <?php } ?>
+    </ul>
 </nav>

@@ -1,37 +1,38 @@
 html, body {
-	font-size:100%;
-	font-family:"Times New Roman";
-	height:100%;
-	padding:0;
-	margin:0;
-	color:#a1a0a0;
+    font-size:100%;
+    font-family:"Times New Roman";
+    height:100%;
+    padding:0;
+    margin:0;
+    color:#a1a0a0;
 }
 
 a {
-	color:#86c8b4;
-	text-decoration:none;
+    color:#86c8b4;
+    text-decoration:none;
 }
 
 p {
-	margin:0 0 4px;
+    margin:0 0 4px;
 }
 
 .box {
-	border-bottom:2px solid #fff;
-	padding:10px;
+    border-bottom:2px solid #fff;
+    padding:10px;
 }
 
 .box.red {
-	background:red;
+    background:red;
 }
 
 .box.lightblue {
-	background:lightblue;
+    background:lightblue;
 }
 
 h1, h2, h3 {
-	margin:0 0 6px;
-	color:#908b8b;
+    margin:0 0 6px;
+    color:#908b8b;
+    font-size:140%;
 }
 
 article, section, header, aside {
@@ -39,70 +40,70 @@ article, section, header, aside {
 }
 
 #header {
-	width:100%;
+    width:100%;
 }
 
 #header h1, #header h2, #header h3 {
-	text-align:center;
-	font-size:240%;
+    text-align:center;
+    font-size:240%;
 }
 
 #header #navigation-top {
-	width:1170px;
-	margin:0 auto;
-	text-align: center;
+    width:1170px;
+    margin:0 auto;
+    text-align: center;
 }
 
 #header #navigation-top ul li {
-	display:inline-block;
-	font-size:120%;
-	margin-right:32px;
+    display:inline-block;
+    font-size:120%;
+    margin-right:32px;
 }
 
 #header #navigation-top ul li a {
-	color:#908b8b;
+    color:#908b8b;
 }
 
 #header #navigation-top ul li a:hover, #header #navigation-top ul li a.active {
-	color:#bfdfd5;
+    color:#bfdfd5;
 }
 
 #wrapper {
-	min-height:71%;
+    min-height:71%;
 }
 
 #content {
-	margin:0 200px 0 300px;
-	padding:0 10px;
+    margin:0 200px 0 300px;
+    padding:0 10px;
 }
 
 #footer {
-	background-color:#86c8b4;
-	height:270px;
+    background-color:#86c8b4;
+    height:270px;
 }
 
 #leftcol {
-	width:270px;
-	float:left;
+    width:270px;
+    float:left;
 }
 
 .row {
-	margin:0 0 6px;
+    margin:0 0 6px;
 }
 
 .row input[type="text"], .row input[type="password"] {
-	padding:4px;
-	border:1px solid #e3e2e2;
+    padding:4px;
+    border:1px solid #e3e2e2;
 }
 
 #authorize a {
-	color:#fff;
+    color:#fff;
 }
 
 #authorize header h1, #authorize header h2, #authorize header h3 {
-	font-size:120%;
+    font-size:120%;
 }
 
 .news-block {
-	margin:0 0 20px;
+    margin:0 0 20px;
 }
