@@ -7,8 +7,10 @@
             
         }
         
-        public function GetResult() {
-            
+        public function GetResult($id) {
+            $result = new Pagination("SELECT * From faq where p_id = '".$id."'",
+                                     "SELECT id From faq where p_id = '".$id."'", 10);
+            return $result;
         }
     }
     

@@ -9,7 +9,11 @@
         }
         
         public function index_action() {
+            $p_id = intval($_GET['id']);
+            $this->data["items"] = $this->model->GetResult($p_id);
+
             $this->view->GetTemplate("faq.phtml","main.phtml", $this->data);
+            
         }
     }
     

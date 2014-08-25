@@ -7,7 +7,7 @@
 		}
 
 		public function index_action(&$data = array(), $params=null) {
-			$p_id = 21;
+			$p_id = $_GET["id"];
 
 			$this->data['news'] = $this->model->GetShortNews($p_id);
 

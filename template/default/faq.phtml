@@ -1,0 +1,10 @@
+<article>
+    
+<?php do { ?>    
+        <section class="f_block">
+            <h2><a href="javascript:faq_page(this);"><?=$items->result["title"]?></a></h2>
+            <section class="f_fulltext"><?=$items->result["content"]?></section>
+        </section>
+<?php } while ($items->result = mysqli_fetch_assoc($items->sql)); ?>
+    
+</article>

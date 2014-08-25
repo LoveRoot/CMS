@@ -31,3 +31,14 @@
   height:24px;
 }
 
+/* Страница - Вопросы и ответы */
+
+.f_block {
+    margin:0 0 10px;
+}
+
+.f_block .f_fulltext {
+    display:none;
+}
+
+/* ---- */
