@@ -107,3 +107,19 @@ article, section, header, aside {
 .news-block {
     margin:0 0 20px;
 }
+
+#pagination {
+
+}
+
+#pagination a {
+	padding:1px 4px;
+	border:1px solid #908b8b;
+	margin-right:5px;
+}
+
+#pagination a.active, #pagination a:hover {
+	background-color:#lightblue;
+	color:#000000;
+	font-weight:bold;
+}

@@ -14,3 +14,7 @@
     <?php } while ($news->result = mysqli_fetch_assoc($news->sql)); ?>
 </article>
 
+<section id="pagination">
+	<?=$news->navigation(core::ParseUrl($_SERVER["REQUEST_URI"])."?page=")?>
+</section>
+

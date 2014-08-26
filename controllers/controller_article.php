@@ -12,15 +12,15 @@
         public function fullnews_action(&$data = array(), $params = null)
         {
             $p_id = $_GET["id"];
-            
+
             $data = $this->model->ReadNews($p_id);
-           
+
             $this->data['page'] = $data;
 
             $this->data['title'] = !empty($data["seotitle"]) ? $data["seotitle"] : $data["title"];
             $this->data['description'] = $data["description"];
             $this->data['keywords'] = $data["keywords"];
-            
+
             $this->view->GetTemplate("system_template/article/fullnews.phtml", "main.phtml", $this->data);
         }
 
@@ -28,10 +28,10 @@
         {
             $p_id = $_GET["id"];
 
-            $this->data['news'] = $this->model->GetShortNews($p_id);
+						$list_news = $this->model->GetNews($p_id);
+            $this->data['news'] = $list_news;
 
             $this->view->GetTemplate("system_template/article/list.phtml", "main.phtml", $this->data);
         }
 
     }
-    
