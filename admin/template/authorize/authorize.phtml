@@ -1,0 +1,22 @@
+<section id="login_admin">
+    <section id="login_admin_window">
+        <section id="login_admin_header">
+					<header><h1>Вход в систему</h1></header>
+				</section>
+        <section id="login_admin_content">
+            <form action="" method="POST">
+                <section class="form_row">
+                    <section class="row"><input type="text" name="user" placeholder="Учётная запись" value="<?=isset($_POST["user"]) ? $_POST["user"] : "" ?>" /></section>
+                </section>
+
+                <section class="form_row">
+                    <section class="row"><input type="password" name="password" placeholder="Пароль" value="" /></section>
+                </section>
+
+                <section class="form_row">
+                    <input type="submit" name="login" id="login" value="Войти" />
+                </section>
+            </form>
+        </section>
+    </section>
+</section>

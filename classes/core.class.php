@@ -79,12 +79,18 @@
          * Настройки сайта
          */
 
-				public static function ParseUrl($url) {
+				public static function ParseUrl($url="") {
 					$path = parse_url($url);
 					return $path['path'];
 				}
 
-        public static function Config($str)
+				/* Рассириализация */
+
+				public static function UnSerialize($string) {
+					return unserialize($string);
+				}
+
+				public static function Config($str)
         {
             $ini = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/engine/config.ini");
             return $ini[$str];

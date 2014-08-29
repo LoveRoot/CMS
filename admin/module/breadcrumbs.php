@@ -1,1 +1,0 @@
-<?php		$arr = array();		$arr[] = $_GET;	$br = new breadcrumb();		$br->assign_link(array("link" => $arr));		$breadcrumbs .= $br->render();	?>

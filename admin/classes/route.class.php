@@ -19,26 +19,30 @@
         {
             $controller_name = 'main';
             $action_name = 'index';
-            $url = parse_url($_SERVER['REQUEST_URI']);
+						$routes = explode('&', $_SERVER["QUERY_STRING"]);
+						$route = array();
 
-            if ($url["path"] !== "/")   {
-                $routes = explode('/', $_SERVER['REQUEST_URI']);
+            if (!empty($route)) {
+								foreach($routes as $url) {
+									$expl = explode("=", $url);
+									$route[] = $expl[1];
+								}
 
                 // получаем имя контроллера
-                if (!empty($routes[1]))
+                if (!empty($route[0]))
                 {
-                    $controller_name = $routes[1];
+                    $controller_name = $route[0];
                 }
 
                 // получаем имя экшена
-                if (!empty($routes[2]))
+                if (!empty($route[1]))
                 {
-                    $action_name = $routes[2];
+                    $action_name = $route[1];
                 }
 
-                if (!empty($routes[3]))
+                if (!empty($route[2]))
                 {
-                    $_GET["id"] = $routes[3];
+                    $_GET["id"] = $route[2];
                 }
             }
 
@@ -47,18 +51,19 @@
             $action_name = $action_name . '_action';
 
             $model_file = strtolower($model_name) . '.php';
-            $model_path = "models/" . $model_file;
+            $model_path = "admin/models/" . $model_file;
             if (file_exists($model_path))
             {
-                include "models/" . $model_file;
+                include "admin/models/".$model_file;
             }
 
-            $controller_file = strtolower($controller_name) . '.php';
-            $controller_path = "controllers/" . $controller_file;
+            $controller_file = strtolower($controller_name).'.php';
+            $controller_path = "admin/controllers/" . $controller_file;
             if (file_exists($controller_path))
             {
-                include "controllers/" . $controller_file;
-            } else
+                include "admin/controllers/" . $controller_file;
+            }
+							else
             {
                 Route::ErrorPage404();
             }
@@ -79,7 +84,7 @@
         public static function ErrorPage404()
         {
             header("HTTP/1.0 404 Not Found");
-            header("Location: /404/index/");
+            header("Location: /admin.php?module=404&action=index");
             die();
         }
 

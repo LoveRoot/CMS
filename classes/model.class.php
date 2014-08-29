@@ -88,7 +88,7 @@
          */
 
         public static function Config($pos = "") {
-            self::$result = parse_ini_file("engine/mysql_config.ini");
+            self::$result = parse_ini_file($_SERVER["DOCUMENT_ROOT"]."/engine/mysql_config.ini");
             return self::$result[$pos];
         }
 

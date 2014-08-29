@@ -1,12 +1,11 @@
 DirectoryIndex index.php
-ErrorDocument 404 /?error=404
 php_value error_reporting 7
 php_value post_max_size 200M
 php_value upload_max_filesize 200M
 
 RewriteEngine on
 RewriteBase /
-RewriteRule ^admin/([^/]*)/?$ /admin.php [L]
+RewriteRule ^admin/?$ /admin/admin.php [L]
 RewriteRule ^tags/([^/]*)/?$ /?model=tags&content=$1 [L]
 RewriteRule ^addnews.html/?$ /?model=addnews [L]
 RewriteRule ^feedback.html/?$ /?model=feedback [L]

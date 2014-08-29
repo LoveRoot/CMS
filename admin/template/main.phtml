@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+				<meta charset="UTF-8">
+        <title><?=$title;?></title>
+        <link rel="stylesheet" type="text/css" href="{TEMPLATE}/css/style.css" />
+        [include="admin/engine/head.phtml"]
+    </head>
+    <body>
+        <section id="wrapper">
+            <section id="top">
+                <header>
+                    <?php include "top/top.phtml" ?>
+                </header>
+            </section>
+
+            <section id="leftcol">
+                <aside>
+                    
+                </aside>
+            </section>
+
+            <section id="content">
+								<?php include $content_view; ?>
+            </section>
+        </section>
+        <section id="bottom">
+            <footer>
+                <?php include "bottom/bottom.phtml" ?>
+            </footer>
+        </section>
+    </body>
+</html>

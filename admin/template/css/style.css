@@ -1,0 +1,112 @@
+html, body {
+    padding:0;
+    margin:0;
+    font-family:arial;
+    height:100%;
+}
+
+a {
+    color:#666666;
+}
+
+* {
+    border:0;
+}
+
+#header {
+	height:140px;
+
+}
+
+#header-inside {
+	width:90%;
+}
+
+#control {
+	float:right;
+	width:20%;
+}
+
+header h1, header h2, header h3 {
+	padding:0;
+	margin:0 0 4px;
+	font-size:120%;
+}
+
+/* Форма */
+
+.form_row {
+	margin:0 0 6px;
+}
+
+input[type="submit"], input[type="button"] {
+    background:url("/admin/engine/images/button/button_blue.jpg") left top;
+    padding:6px;
+    color:#ffffff;
+    font-size:70%;
+    cursor:pointer;
+    margin-bottom:5px;
+    text-transform:UpperCase;
+    border:1px solid #305a8c;
+    border-radius:4px;
+    box-shadow:0 2px 3px 0 #d0d0d0;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background:url("/admin/engine/images/button/button_blue.jpg") left -33px;
+}
+
+input[type="submit"]:active, input[type="button"]:active {
+    background:url("/admin/engine/images/button/button_blue.jpg") left -68px;
+    border-bottom:0;
+    box-shadow:0 1px 1px 0 #7695ba;
+}
+
+/* ------ */
+
+
+/* Авторизация */
+
+#login_admin {
+    padding:15px;
+    border:1px solid #fff;
+    background:#f2f2f2;
+    position:absolute;
+    box-shadow:0px 1px 4px 0 #000000;
+		position:absolute;
+}
+
+#login_admin_window {
+    overflow:hidden;
+}
+
+#login_admin form {
+    margin:0 0 0;
+}
+
+#login_admin #login_admin_header {
+    margin:0 0 20px;
+    border-bottom:1px solid silver;
+}
+
+#login_admin #login_admin_header h1 {
+    display:inline-block;
+}
+
+#login_admin form input[type="text"], #login_admin form input[type="password"] {
+    padding:10px 27px;
+    font-size:16px;
+    color:#666666 !important;
+    background:#f0eef0 url("/admin/engine/images/form/user.png") no-repeat 10px 14px;
+    border:1px solid #dfdfdf;
+    width:299px;
+}
+
+#login_admin #login_admin_content input[type="password"] {
+     background:#f0eef0 url("/admin/engine/images/form/password.png") no-repeat 10px 12px !important;
+}
+
+#login_admin #login_admin_content input[type="submit"] {
+    width:340px;
+    margin:0 7px;
+}
