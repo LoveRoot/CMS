@@ -10,7 +10,7 @@
 						$this->Logout();
 					}
 			}	else {
-				if ($arr["admin"][$_GET["module"]] !== "on") {
+				if ($arr["admin"][$_GET["component"]]["status"] !== "on") {
 					$this->Logout();
 				}
 			}
