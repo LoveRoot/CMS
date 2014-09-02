@@ -110,3 +110,21 @@ input[type="submit"]:active, input[type="button"]:active {
     width:340px;
     margin:0 7px;
 }
+
+#navigation {
+    
+}
+
+#navigation ul {
+    padding:0;
+    margiin:0;
+}
+
+#navigation ul li {
+    display:block;
+}
+
+#navigation ul li a {
+    padding:30px 20px;
+    display:inline-block;
+}
