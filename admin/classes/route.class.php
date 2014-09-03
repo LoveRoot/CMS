@@ -17,8 +17,12 @@
         public static function ParseUrl($url) {
             $controller_name = 'main';
             $action_name = 'index';
+						
             $routes = explode('&', $_SERVER["QUERY_STRING"]);
             $route = array();
+
+						if (in_array("", $routes))
+						unset($routes);
 
             if (!empty($routes)) {
                 foreach ($routes as $url) {

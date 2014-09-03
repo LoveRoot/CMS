@@ -2,7 +2,8 @@
 <ul>
 	<?php foreach($modules as $items) { ?>
 			<?php if ($permissions["admin"][$items["name"]]["status"] == "on") { ?>
-					<li><a href=<?=($items["status"] == 1) ? "?component=".$items["name"]."&action=index" : "javascript:;" ?>><?=$items["caption"]?></a></li>
+	<li><a href=<?=($items["status"] == 1) ? "?component=".$items["name"]."&action=index" : "javascript:;"?>
+				 class="<?=(isset($items["name"])) && $items["name"] == $_GET["component"] ? "active":""?>"><?=$items["caption"]?></a></li>
 			<?php } ?>
 	<?php } ?>
 </ul>

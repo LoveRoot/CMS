@@ -34,7 +34,7 @@
 
             mysqli_set_charset(self::$link, "utf8");
 						} catch (Exception $e) {
-							self::MysqliCriticalError($e->getMessage(),$e->getFile(),$e->getLine());
+								die(self::MysqliCriticalError($e->getMessage(),$e->getFile(),$e->getLine()));
 						}
 
         }

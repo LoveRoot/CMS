@@ -3,6 +3,7 @@ html, body {
     margin:0;
     font-family:arial;
     height:100%;
+		background:#fff;
 }
 
 a {
@@ -31,6 +32,10 @@ header h1, header h2, header h3 {
 	padding:0;
 	margin:0 0 4px;
 	font-size:120%;
+}
+
+#content {
+	margin-left:27%;
 }
 
 /* Форма */
@@ -111,13 +116,17 @@ input[type="submit"]:active, input[type="button"]:active {
     margin:0 7px;
 }
 
+/* Левая колонка */
+
 #navigation {
-    
+   background:#f7f7f7;
+	 float:left;
+	 width:25%;
 }
 
 #navigation ul {
     padding:0;
-    margiin:0;
+    margin:0;
 }
 
 #navigation ul li {
@@ -126,5 +135,10 @@ input[type="submit"]:active, input[type="button"]:active {
 
 #navigation ul li a {
     padding:30px 20px;
-    display:inline-block;
+    display:block;
+}
+
+#navigation ul li a.active, #navigation ul li a:hover {
+    background:#ffffff;
+    border-left:12px solid #379AD3;
 }
