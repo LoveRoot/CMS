@@ -14,6 +14,12 @@ a {
     border:0;
 }
 
+.inline {
+	padding-bottom:6px;
+  border-bottom:4px solid #379ad3;
+  display:block !important;
+}
+
 #header {
 	height:140px;
 
@@ -30,17 +36,82 @@ a {
 
 header h1, header h2, header h3 {
 	padding:0;
-	margin:0 0 4px;
+	margin:0 0 8px;
 	font-size:120%;
 }
 
-#content {
+#right-col {
 	margin-left:27%;
 }
+
+#content {
+	padding: 0 15px 0 15px;
+  background:#F7F7F7;
+	border-left:1px solid #E3E3E3;
+	border-bottom:1px solid #E3E3E3;
+}
+
+/* Табы */
+
+#tabs {
+
+}
+
+#tabs ul {
+	padding:0;
+	margin:0;
+}
+
+
+#tabs ul li {
+	display:inline-block;
+}
+
+#tabs ul li#last {
+    margin-right:0px;
+}
+
+#tabs ul li a {
+    display:block;
+    padding: 10px;
+    color:#AE0D0D;
+    text-align:center;
+    background:#F7F7F7;
+    text-decoration:none;
+    text-transform:UpperCase;
+    font-size:90%;
+    border:1px solid #E3E3E3;
+    border-bottom:0;
+    border-radius:5px 5px 0 0;
+}
+
+#tabs ul li a:hover {
+		color:#136398 !important;
+    border-top:3px solid #44C7F5 !important;
+    border-bottom:0;
+}
+
+#ui-tabs-hide {
+    display:none;
+}
+
+.ui-tabs-active a {
+    color:red !important;
+    border-top:3px solid red !important;
+    border-bottom:0;
+		font-weight:bold;
+}
+
+/* --- */
 
 /* Форма */
 
 .form_row {
+	margin:0 0 15px;
+	padding:0 20px 0 0px;
+}
+
+.label {
 	margin:0 0 6px;
 }
 
@@ -65,6 +136,15 @@ input[type="submit"]:active, input[type="button"]:active {
     background:url("/admin/engine/images/button/button_blue.jpg") left -68px;
     border-bottom:0;
     box-shadow:0 1px 1px 0 #7695ba;
+}
+
+input[type="text"], input[type="email"], textarea {
+	padding:8px;
+	width:100%;
+}
+
+select {
+	padding:2px;
 }
 
 /* ------ */

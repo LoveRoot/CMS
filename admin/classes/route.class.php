@@ -5,7 +5,7 @@
         public static $module;
         public static $models;
         public static $action;
-        public static $params;
+        public static $params = array();
 
         public static function I() {
             if (!(self::$instance instanceof self)) {
@@ -17,31 +17,35 @@
         public static function ParseUrl($url) {
             $controller_name = 'main';
             $action_name = 'index';
-						
-            $routes = explode('&', $_SERVER["QUERY_STRING"]);
-            $route = array();
 
-						if (in_array("", $routes))
-						unset($routes);
+						$url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+
+						$routes = explode('&', trim($url_path, ' &'));
+
+            $route = array();
 
             if (!empty($routes)) {
                 foreach ($routes as $url) {
                     $expl = explode("=", $url);
-                    $route[] = $expl[1];
+                    $route[$expl[0]] = $expl[1];
                 }
 
+								if (count($route) > 3) {
+									 Route::ErrorPage404();
+								}
+
                 // получаем имя контроллера
-                if (!empty($route[0])) {
-                    $controller_name = $route[0];
+                if (!empty($route["component"])) {
+                    $controller_name = $route["component"];
                 }
 
                 // получаем имя экшена
-                if (!empty($route[1])) {
-                    $action_name = $route[1];
+                if (!empty($route["action"])) {
+                    $action_name = $route["action"];
                 }
 
-                if (!empty($route[2])) {
-                    $_GET["id"] = $route[2];
+                if (!empty($expl[0]) && count($route) > 2) {
+                    self::$params["param"][$expl[0]] = $expl[1];
                 }
             }
 
@@ -67,7 +71,7 @@
             $action = $action_name;
 
             if (method_exists($controller, $action)) {
-                $controller->$action();
+                $controller->$action($data=array(), self::$params);
             } else {
                 Route::ErrorPage404();
             }

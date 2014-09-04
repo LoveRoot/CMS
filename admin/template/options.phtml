@@ -1,7 +1,59 @@
 <section id="maincont">
-		<header><h1>Основные настройки</h1></header>
+		<header><h1 class="inline">Основные настройки</h1></header>
+		<section class="form_row">
+				<section class="label">Название сайта</section>
+				<section class="row"><input type="text" name="sitename" placeholder="Имя сайта" value="<?=isset($_POST["sitename"])?$_POST["sitename"]:$data["sitename"]?>" /></section>
+		</section>
+
+		<section class="form_row">
+				<section class="label">Описание сайта</section>
+				<section class="row">
+					<textarea name="description" placeholder="Описание сайта" style="height:120px;">
+							<?=isset($_POST["sitename"]) ? $_POST["sitename"] : $data["sitename"]?>
+					</textarea>
+				</section>
+		</section>
+
+		<section class="form_row">
+				<section class="label">Ключевые слова</section>
+				<section class="row">
+					<textarea name="keywords" placeholder="Ключевые слова" style="height:120px;">
+							<?=isset($_POST["sitename"]) ? $_POST["sitename"] : $data["sitename"]?>
+					</textarea>
+				</section>
+		</section>
+
+		<section class="form_row">
+				<section class="label">Шаблон</section>
+				<section class="row">
+					<select name="template" style="width:180px;">
+
+					</select>
+				</section>
+		</section>
+
+		<section class="form_row">
+				<section class="label">Состояние сайта</section>
+				<section class="row">
+					<select name="site_status" style="width:180px;">
+
+					</select>
+				</section>
+		</section>
+
+</section>
+
+<section id="defend">
+		<header><h1 class="inline">Защита</h1></header>
 		<section class="form_row">
 				<section class="label"></section>
 				<section class="row"></section>
+		</section>
+</section>
+
+<section class="form_row">
+		<section class="row">
+				<input type="submit" name="save_and_exit" value="Сохранить" />
+				<input type="submit" name="save" value="Применить" />
 		</section>
 </section>

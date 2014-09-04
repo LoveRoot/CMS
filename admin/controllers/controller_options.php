@@ -5,8 +5,8 @@ class controller_options extends Controller{
         parent::__construct();
         $this->model = new model_options();
     }
-    
-    public function index_action() {
+
+    public function index_action(&$data=array(), &$vParams = array()) {
         $data['title'] = "Настройка сайта";
         $this->view->GetTemplate("options.phtml","main.phtml", $data);
     }

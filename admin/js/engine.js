@@ -14,4 +14,5 @@ $(function() {
 		var coord = get_center_coord("#login_admin");
 		console.log(coord.scroll);
 		$("#login_admin").css({"left":coord.left+"px","top":coord.top+coord.scroll+"px"});
+		$("#right-col").tabs();
 });
