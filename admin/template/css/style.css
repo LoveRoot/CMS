@@ -32,6 +32,7 @@ a {
 #control {
 	float:right;
 	width:20%;
+
 }
 
 header h1, header h2, header h3 {
@@ -41,7 +42,7 @@ header h1, header h2, header h3 {
 }
 
 #right-col {
-	margin-left:27%;
+	margin: 0 2% 2% 27%;
 }
 
 #content {

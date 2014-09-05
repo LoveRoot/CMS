@@ -20,9 +20,11 @@
 
 						$url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
 
-						$routes = explode('&', trim($url_path, ' &'));
-
+						$routes = explode('&', trim($url_path, '&'));
             $route = array();
+						if (is_array($routes) && empty($routes[0])) {
+							unset($routes[0]);
+						}
 
             if (!empty($routes)) {
                 foreach ($routes as $url) {

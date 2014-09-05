@@ -5,9 +5,21 @@
 			$this->model = new model_main();
 		}
 
+		public function logout_action() {
+			setcookie("user","", time() - 10000000);
+			header("Location: /admin.php");
+		}
+
 		public function index_action(&$data="") {
-			$data['title'] = "Панель управления сайтом";
-			$this->view->GetTemplate("index_content.phtml","main.phtml", $data);
+
+			if (isset($_COOKIE["user"]) && !empty($_COOKIE["user"])) {
+				$data['title'] = "Панель управления сайтом";
+				$this->view->GetTemplate("index_content.phtml","main.phtml", $data);
+			}	else {
+				$data['title'] = "Панель управления сайтом - Авторизация";
+				$this->view->GetTemplate("","authorize.phtml", $data);
+			}
+
 		}
 	}
 ?>

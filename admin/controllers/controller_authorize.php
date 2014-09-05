@@ -23,10 +23,10 @@
 							$this->view->GetTemplate("main.phtml","authorize/authorize.phtml");
 					}
 			 }	else {
-				 $this->view->GetTemplate("main.phtml","authorize/authorize.phtml");
+				 if (isset($_GET["component"]))
+					header("location: /admin.php");
+				 $this->view->GetTemplate("authorize.phtml","authorize/authorize.phtml");
 			 }
-
-
 		}
 	}
 ?>
