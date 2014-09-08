@@ -50,9 +50,13 @@
          * Системное сообщение об ошибке
          */
 
-        public static function GetSystemError($string)
+        public static function GetSystemError($string, $cookie = 0)
         {
-            echo "<section id='system_message_error'><span>{$string}</span><span id='close'><a href=\"javascript:close('#system_message_error')\";></a></span></section>";
+						if ($cookie == 0) {
+							 echo "<section id='system_message_error'><span>{$string}</span><span id='close'><a href=javascript:close('#system_message_error')>X</a></span></section>";
+						}	else {
+							setcookie("message", $string, time() + 1);
+						}
         }
 
         /*

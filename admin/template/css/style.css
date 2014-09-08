@@ -4,6 +4,7 @@ html, body {
     font-family:arial;
     height:100%;
 		background:#fff;
+		overflow-x:hidden;
 }
 
 a {
@@ -50,6 +51,7 @@ header h1, header h2, header h3 {
   background:#F7F7F7;
 	border-left:1px solid #E3E3E3;
 	border-bottom:1px solid #E3E3E3;
+	min-height:100px;
 }
 
 /* Табы */
@@ -148,6 +150,66 @@ select {
 	padding:2px;
 }
 
+label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 20px;
+    margin-right: 20px;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+label:before {
+    content: "";
+    display: inline-block;
+
+    width: 16px;
+    height: 16px;
+
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    bottom:1px;
+
+    background-color: #aaa;
+    background:#379AD3;
+
+}
+
+.radio label:before {
+    border-radius: 8px;
+}
+
+input[type=radio]:checked + label:before {
+    content: "\2022";
+    color: #fff;
+    font-size: 150%;
+    text-align: center;
+    vertical-align:middle;
+    line-height: 16px;
+		font-weight: bold;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.checkbox label:before {
+    border-radius: 3px;
+}
+
+input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 100%;
+    color:#fff;
+    text-align: center;
+    line-height: 15px;
+}
+
 /* ------ */
 
 
@@ -222,4 +284,40 @@ select {
 #navigation ul li a.active, #navigation ul li a:hover {
     background:#ffffff;
     border-left:12px solid #379AD3;
+}
+
+/* Системные сообщения */
+
+#system_message_error {
+	position:absolute;
+	z-index: 100;
+	background:rgba(36,190,232, 0.8);
+	padding:10px;
+	width:50%;
+	left:25%;
+	color:#fff;
+	border:1px solid #F8E905;
+	border-top:0;
+
+}
+
+#system_message_error #close {
+	float:right;
+	width:16px;
+	height:16px;
+}
+
+#shadow {
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+    display:none;
+    width:100%;
+    height:100%;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50); /* IE 5.5+*/
+    -moz-opacity: 0.5; /* Mozilla 1.6 и ниже */
+    -khtml-opacity: 0.5; /* Konqueror 3.1, Safari 1.1 */
+    opacity: 0.5; /* CSS3 - Mozilla 1.7b +, Firefox 0.9 +, Safari 1.2+, Opera 9+ */
+    background:#000000;
 }

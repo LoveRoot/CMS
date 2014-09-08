@@ -66,6 +66,15 @@
         }
 
 				/*
+				 * 301 редирект
+				 */
+
+				public static function Redirect301($url) {
+					header("HTTP/1.0 301 Moved Permanently");
+					header("Location: {$url}");
+				}
+
+				/*
 				 * Собрать URL
 				 */
 

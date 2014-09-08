@@ -23,9 +23,9 @@
 							$this->view->GetTemplate("main.phtml","authorize/authorize.phtml");
 					}
 			 }	else {
-				 if (isset($_GET["component"]))
-					header("location: /admin.php");
-				 $this->view->GetTemplate("authorize.phtml","authorize/authorize.phtml");
+				 if ($_SERVER["REQUEST_URI"] !== "/admin.php")
+						header("Location: /admin.php");
+						$this->view->GetTemplate("authorize.phtml","authorize/authorize.phtml");
 			 }
 		}
 	}

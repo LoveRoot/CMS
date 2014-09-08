@@ -1,0 +1,36 @@
+<header><h1 class="inline">Основные настройки</h1></header>
+<section class="form_row">
+	<section class="label">Название сайта</section>
+	<section class="row"><input name="params[site_name]" type="text" placeholder="Имя сайта" value="<?=isset($_POST["params"]["site_name"]) ? $_POST["params"]["site_name"] : isset($param["params"]["site_name"]) ? $param["params"]["site_name"] : ""  ?>" /></section>
+</section>
+
+<section class="form_row">
+	<section class="label">Описание сайта</section>
+	<section class="row">
+		<textarea name="params[description]" placeholder="Описание сайта" style="height:90px;"><?=isset($_POST["params"]["description"]) ? $_POST["params"]["description"] : isset($param["params"]["description"]) ? $param["params"]["description"] : ""  ?></textarea>
+	</section>
+</section>
+
+<section class="form_row">
+	<section class="label">Ключевые слова</section>
+	<section class="row">
+		<textarea name="params[keywords]" placeholder="Ключевые слова" style="height:90px;"><?=isset($_POST["params"]["keywords"]) ? $_POST["params"]["keywords"] : isset($param["params"]["keywords"]) ? $param["params"]["keywords"] : ""  ?></textarea>
+	</section>
+</section>
+
+<section class="form_row">
+	<section class="label">Шаблон</section>
+	<section class="row">
+		<select name="params[template]" style="width:180px;">
+			<?=$template?>
+		</select>
+	</section>
+</section>
+
+<section class="form_row">
+	<section class="label">Состояние сайта</section>
+	<section class="row">
+		<input type="checkbox" id="site_status" name="params[site_status]" <?= isset($param["params"]["site_status"]) && $param["params"]["site_status"] == "on" ? "checked" : "" ?> />
+		<label for="site_status">Отключён / В работе</label>
+	</section>
+</section>

@@ -9,6 +9,10 @@
 
 		$model = Model::I();
 
+		if (isset($_COOKIE["message"])) {
+			core::GetSystemError(core::Vanish($_COOKIE["message"]));
+		}
+
 		require_once("admin/engine/init.php");
 		ob_get_contents();
 ?>
