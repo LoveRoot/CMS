@@ -27,7 +27,7 @@ a {
 }
 
 #header-inside {
-	width:90%;
+	width:100%;
 }
 
 #control {
@@ -214,6 +214,11 @@ input[type=checkbox]:checked + label:before {
 
 
 /* Авторизация */
+
+#authorize #control {
+	background:url("/admin/engine/images/page/users48.png") no-repeat left top;
+	padding-left:60px;
+}
 
 #login_admin {
     padding:15px;
