@@ -1,5 +1,4 @@
 <?php
-
     class Controller
     {
 
@@ -18,7 +17,10 @@
 				public function DefaultConfig($value="") {
 						$res = Model::SelectItems("config", array("config"), "id=1");
 						$result = unserialize($res["config"]);
-						return $result["params"][$value];
+						if (!empty($result["params"][$value])) {
+								return $result["params"][$value];
+						}
+
 				}
 
         public function GetHead($id)

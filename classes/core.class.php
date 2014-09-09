@@ -2,7 +2,6 @@
 
     class core
     {
-
         private static $instance;
 
         public static function I()
@@ -102,7 +101,7 @@
 
         private function __construct()
         {
-
+						
         }
 
         private function __wakeup()
