@@ -1,7 +1,9 @@
 function unload_page() {
+	$("#shadow").after("<section id='load_page'></section>");
 	var coord = get_center_coord("#load_page");
+	$("#load_page").css({"left":""+coord.left+"px","top":""+coord.top+coord.scroll+"px;"}).html("Пожалуйста подождите....<br /><img src='/admin/engine/images/page/load_page.gif'>");
 	$("#shadow").show();
-	$("body").append("<img id='load_page' src='/admin/engine/images/page/load_page.gif' style='position:absolute; left:"+coord.left+"px; top:"+coord.top+coord.scroll+"px;' />");
+
 }
 
 function close(obj) {

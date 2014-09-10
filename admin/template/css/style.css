@@ -326,3 +326,11 @@ input[type=checkbox]:checked + label:before {
     opacity: 0.5; /* CSS3 - Mozilla 1.7b +, Firefox 0.9 +, Safari 1.2+, Opera 9+ */
     background:#000000;
 }
+
+#load_page {
+	position:absolute;
+	width:auto;
+	z-index:1000000;
+	color:#fff;
+	font-size:140%;
+}

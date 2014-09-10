@@ -20,7 +20,6 @@
 						if (!empty($result["params"][$value])) {
 								return $result["params"][$value];
 						}
-
 				}
 
         public function GetHead($id)
