@@ -28,5 +28,8 @@ $(function() {
 
 		window.onbeforeunload = function (event) { unload_page(); }
 
-		$("#right-col").tabs();
+		$("#right-col ul#tabs").each(function() {
+				$("#right-col ").tabs();
+		})
+
 });

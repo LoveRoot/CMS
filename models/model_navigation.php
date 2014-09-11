@@ -10,7 +10,7 @@
 
         public function GetArray()
         {
-            $result = Model::QueryString("Select id, p_id, link, title, status, type From pages ORDER By sort");
+            $result = Model::QueryString("Select id, p_id, name, status, is_catalog From pages ORDER By sort");
 
             if ($result == true)
             {
@@ -32,4 +32,3 @@
         }
 
     }
-    

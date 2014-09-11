@@ -28,9 +28,10 @@
 								</section>
 
 								<section id="content">
-										<?php
-												include $content_view;
-										?>
+										<?php if (isset($header)) { ?>
+											<header><h1 class="inline"><?=$header?></h1></header>
+										<?php } ?>
+										<?php include $content_view; ?>
 								</section>
 						</section>
         </section>

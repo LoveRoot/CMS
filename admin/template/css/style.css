@@ -15,6 +15,12 @@ a {
     border:0;
 }
 
+ul {
+	padding:0;
+	margin:0 0 6px;
+	list-style:none;
+}
+
 .inline {
 	padding-bottom:6px;
   border-bottom:4px solid #379ad3;
@@ -47,7 +53,7 @@ header h1, header h2, header h3 {
 }
 
 #content {
-	padding: 0 15px 0 15px;
+	padding: 15px 15px 0 15px;
   background:#F7F7F7;
 	border-left:1px solid #E3E3E3;
 	border-bottom:1px solid #E3E3E3;
