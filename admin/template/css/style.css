@@ -297,6 +297,42 @@ input[type=checkbox]:checked + label:before {
     border-left:12px solid #379AD3;
 }
 
+/* Контроллер pages */
+
+		/* Список страниц */
+
+		#pages ul li ul {
+			margin:2px 30px 2px;
+		}
+
+		#pages ul li {
+			margin:4px 0;
+		}
+
+		#pages ul li a {
+			padding:5px 30px;
+			display:block;
+			text-decoration:none;
+			font-size:95%;
+		}
+
+
+		#pages ul li a.main {
+			background:url("/admin/engine/images/other/24/home.png") no-repeat left center;
+		}
+
+		#pages ul li a.news {
+			background:url("/admin/engine/images/other/24/news.png") no-repeat left center;
+		}
+
+		#pages ul li a.html {
+			background:url("/admin/engine/images/other/24/html.png") no-repeat left center;
+		}
+
+		/* -- */
+
+/* -- */
+
 /* Системные сообщения */
 
 #system_message_error {
