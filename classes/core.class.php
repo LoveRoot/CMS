@@ -58,6 +58,15 @@
 						}
         }
 
+				/*
+				 * Загрузка JS скриптов
+				 */
+
+				public static function AddFileScriptJs($src="") {
+					$script = "<script type='text/javascript' src='{$src}'></script>";
+					echo $script."\n";
+				}
+
         /*
          * Очистка входных данных типа string
          */
@@ -101,7 +110,7 @@
 
         private function __construct()
         {
-						
+
         }
 
         private function __wakeup()

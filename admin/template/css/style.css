@@ -376,3 +376,12 @@ input[type=checkbox]:checked + label:before {
 	color:#fff;
 	font-size:140%;
 }
+
+// Дополнительные окна
+
+#property {
+	border:1px solid #000000;
+	width:290px;
+	padding:10px;
+	min-height:40px;
+}

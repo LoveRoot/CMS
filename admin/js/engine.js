@@ -1,3 +1,5 @@
+
+
 function unload_page() {
 	$("#shadow").after("<section id='load_page'></section>");
 	var coord = get_center_coord("#load_page");
