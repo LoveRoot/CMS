@@ -302,20 +302,22 @@ input[type=checkbox]:checked + label:before {
 		/* Список страниц */
 
 		#pages ul li ul {
-			margin:2px 30px 2px;
+			margin:2px 20px 2px;
 		}
 
 		#pages ul li {
-			margin:4px 0;
+			margin:10px 0;
 		}
 
 		#pages ul li a {
-			padding:5px 30px;
-			display:block;
+			padding:4px 0 0 30px;
 			text-decoration:none;
 			font-size:95%;
 		}
 
+		#pages ul li a.invisible {
+			color:rgba(102,121,160, 0.6);
+		}
 
 		#pages ul li a.main {
 			background:url("/admin/engine/images/other/24/home.png") no-repeat left center;
@@ -377,6 +379,11 @@ input[type=checkbox]:checked + label:before {
 	font-size:140%;
 }
 
+#ajax {
+	text-transform:UpperCase;
+	color:#000;
+}
+
 // Дополнительные окна
 
 #property {
@@ -384,4 +391,29 @@ input[type=checkbox]:checked + label:before {
 	width:290px;
 	padding:10px;
 	min-height:40px;
+}
+
+#property #property-content {
+	border:2px solid #0B73C9;
+	padding:10px;
+	background:#fff;
+}
+
+#property #property-content ul li {
+	margin-bottom:10px;
+}
+
+#property #property-content ul li a {
+	text-transform:UpperCase;
+	text-decoration:none;
+}
+
+#property a#close_window {
+	 background: url("/admin/engine/images/button/close.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+   cursor: pointer;
+   height: 32px;
+   position: absolute;
+   right: -3px;
+   top: -32px;
+   width: 32px;
 }

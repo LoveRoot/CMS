@@ -19,7 +19,7 @@
 		}
 
 		public function Category() {
-			$result = Model::QueryString("Select id, p_id, name, status, is_catalog, page_type, system From pages ORDER By sort");
+			$result = Model::QueryString("Select id, p_id, name, status, page_type, is_catalog, system From pages WHERE is_catalog = 1 ORDER By sort");
 
 			if ($result == true) {
 				$this->tree_cat = array();
@@ -36,6 +36,7 @@
 
 		public function GetPages($p_id = 0) {
 			if (isset($this->category[$p_id])) {
+
 				$this->pages .= "<ul>";
 
 				foreach ($this->category[$p_id] as $cat) {
@@ -44,18 +45,13 @@
 
 					$this->pages .= "<li>";
 
-					if ($cat["is_catalog"] == 1) {
-							$this->pages .= "<a href='javascript:;' class='{$cat["page_type"]}' onclick='open_property(this)'>".$cat["name"]."</a>";
+					$active = $cat["status"] == 0 ? "invisible" :"";
 
-							if ($cat["page_type"] !== "main" && $cat["page_type"] !== "html") {
-								$this->pages .= "<a href='javascript:;'>Элементы страницы</a>";
-							}
-					}
+					$this->pages .= "<a href='javascript:;' class='{$cat["page_type"]} {$active}' onclick='open_property(event, this)' data-itemid = '{$cat["id"]}' data-catalog='{$cat["is_catalog"]}'>".$cat["name"]."</a>";
 
 					$this->GetPages($cat["id"]);
 
 					$this->pages .= "</li>";
-
 				}
 				$this->pages .= "</ul>";
 			}

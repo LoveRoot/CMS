@@ -8,7 +8,6 @@
 
 		public function index_action() {
 			$data['title'] = "Список страниц";
-			$data['header'] = "Список страниц";
 			$data['items'] = $this->model->GetPages(0);
 			$this->view->GetTemplate("pages/show_elements.phtml","main.phtml", $data);
 		}

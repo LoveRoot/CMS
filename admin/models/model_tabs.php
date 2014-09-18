@@ -11,4 +11,8 @@
 			return $this->tabs = array("options" => array("id" => "#maincont", "name" => "Параметры"),
 																 "defend" => array("id" => "#defend", "name" => "Защита"));
 		}
+
+		public function pages() {
+			return $this->tabs = array("options" => array("id" => "#maincont", "name" => "Список страниц"));
+		}
 	}

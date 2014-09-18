@@ -1,11 +1,50 @@
+function popup(title, page, width)
+{
+    var popup_window = $("#modal_window");
+    var coord = get_center_coord("#ajax_icon");
+    var content = page;
 
+    popup_window.css("top", + coord.top + $(window).scrollTop() + 'px');
+    popup_window.css("left", + coord.left + 'px');
+    popup_window.css("width", width +'px');
+
+    $("#shadow").show();
+    $("#title").html("<h1>"+title+"</h1>");
+
+    if (content != "") {
+        $.ajax({
+            url:content,
+            type:"GET",
+            cache:false,
+            beforeSend: function() {
+               $("body").after("<section id='load_page' style='left:" + coord.left + "px; top:" + coord.top + "px'><img id='ajax' src='/admin/engine/images/page/load_page.gif'/></section>");
+            },
+            success: function(html) {
+                $("#load_page").remove();
+                $("#modal_window_content").html(html);
+
+            }
+        });
+    }
+
+    popup_window.fadeIn(500);
+
+    //При клике на иконку, скрывает
+
+    $("#modal_window .close").click(function() {
+        $('#shadow').fadeOut(200);
+        popup_window.fadeOut(100);
+    });
+
+    $("#shadow").click(function () {
+        $('#shadow').fadeOut(200);
+        popup_window.fadeOut(100);
+    });
+}
 
 function unload_page() {
-	$("#shadow").after("<section id='load_page'></section>");
-	var coord = get_center_coord("#load_page");
-	$("#load_page").css({"left":""+coord.left+"px","top":""+coord.top+coord.scroll+"px;"}).html("Пожалуйста подождите....<br /><img src='/admin/engine/images/page/load_page.gif'>");
-	$("#shadow").show();
-
+	var coord = get_center_coord("#ajax");
+	$("body").after("<section id='load_page' style='left:" + coord.left + "px; top:" + coord.top + "px'><img id='ajax' src='/admin/engine/images/page/load_page.gif' alt='Пожалуйста подождите...' /></section>");
 }
 
 function close(obj) {
