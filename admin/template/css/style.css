@@ -297,6 +297,37 @@ input[type=checkbox]:checked + label:before {
     border-left:12px solid #379AD3;
 }
 
+/* Создание новой страницы */
+
+#page_create ul {
+    padding:0;
+    margin:15px;
+}
+
+#page_create ul li {
+    display:block;
+    list-style:none;
+    margin-bottom:20px;
+}
+
+#page_create ul li a {
+    text-decoration:none;
+    color:#362935;
+}
+
+#page_create #leftcol {
+    width:auto;
+    margin-right:10px;
+    float:left;
+}
+
+#page_create #rightcol {
+    width:auto;
+    float:right;
+}
+
+/* -Создание новой страницы- */
+
 /* Контроллер pages */
 
 		/* Список страниц */
@@ -416,4 +447,47 @@ input[type=checkbox]:checked + label:before {
    right: -3px;
    top: -32px;
    width: 32px;
+}
+
+/* Модальное окно */
+
+
+#modal_window {
+    position:absolute;
+    display:none;
+    z-index:9999;
+}
+
+#top-section {
+    overflow:hidden;
+		background:transparent;
+		padding:5px;
+}
+
+#modal_window #title {
+    width:auto;
+    float:left;
+}
+
+#modal_window #title h1 {
+    display:inline-block;
+    color:#fff;
+    font-size:120%;
+    padding:0;
+    margin:0;
+}
+
+#modal_window #modal_window_content {
+    min-height:60px;
+    overflow:hidden;
+		background:#fff;
+		border:2px solid #EBEBEB;
+		padding:10px;
+}
+
+#modal_window #close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 24px;
 }

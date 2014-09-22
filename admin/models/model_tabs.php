@@ -13,6 +13,6 @@
 		}
 
 		public function pages() {
-			return $this->tabs = array("options" => array("id" => "#maincont", "name" => "Список страниц"));
+			return $this->tabs = array("index" => array("id" => "#maincont", "name" => "Список страниц"));
 		}
 	}

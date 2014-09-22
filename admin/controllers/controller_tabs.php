@@ -10,6 +10,7 @@
 					$component = core::Vanish($_GET["component"]);
 
 					if (isset($component) && method_exists($this->model, $component)) {
+						$data['action'] = core::Vanish($_GET['action']);
 						$data['tabs'] = $this->model->$component();
 					}
 

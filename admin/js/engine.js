@@ -22,7 +22,7 @@ function popup(title, page, width)
             success: function(html) {
                 $("#load_page").remove();
                 $("#modal_window_content").html(html);
-
+								$("#property").remove();
             }
         });
     }
