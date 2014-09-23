@@ -47,7 +47,7 @@
 
 					$active = $cat["status"] == 0 ? "invisible" :"";
 
-					$this->pages .= "<a href='javascript:;' class='{$cat["page_type"]} {$active}' onclick='open_property(event, this)' data-itemid = '{$cat["id"]}' data-catalog='{$cat["is_catalog"]}'>".$cat["name"]."</a>";
+					$this->pages .= "<a href='javascript:;' class='{$cat["page_type"]} {$active}' onclick='open_property(event, this, ".$cat["id"].")' data-itemid = '{$cat["id"]}' data-catalog='{$cat["is_catalog"]}'>".$cat["name"]."</a>";
 
 					$this->GetPages($cat["id"]);
 

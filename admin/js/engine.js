@@ -1,4 +1,4 @@
-function popup(title, page, width)
+function popup(title, page, width, id)
 {
     var popup_window = $("#modal_window");
     var coord = get_center_coord("#ajax_icon");
@@ -22,6 +22,14 @@ function popup(title, page, width)
             success: function(html) {
                 $("#load_page").remove();
                 $("#modal_window_content").html(html);
+
+								if (id) {
+									$("#modal_window_content ul li a").each(function() {
+										var href = $(this).attr("href");
+										$(this).attr("href", href+"&p_id="+id);
+									});
+								}
+
 								$("#property").remove();
             }
         });

@@ -32,7 +32,7 @@ class Route {
                 $route[$expl[0]] = $expl[1];
             }
 
-            if (count($route) > 3) {
+            if (count($route) > 4) {
                 Route::ErrorPage404();
             }
 
@@ -90,15 +90,15 @@ class Route {
     }
 
     private function __construct() {
-        
+
     }
 
     private function __wakeup() {
-        
+
     }
 
     private function __clone() {
-        
+
     }
 
 }
