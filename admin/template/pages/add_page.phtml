@@ -1,6 +1,56 @@
-<section id="maincont">
-</section>
-<section id="advanced">
-</section>
-<section id="seo">
-</section>
+<Form action="" method="POST" enctype="multipart/form-data">
+		<section class="form_row">
+				<section class="label">Заголовок:</section>
+				<section class="row"><input type="text" name="title" value="" placeholder="Заголовок элемента / раздела" /></section>
+		</section>
+
+		<section class="form_row">
+				<section class="label">Ссылка / Урл:</section>
+				<section class="row"><input type="text" name="url" value="" placeholder="Ссылочное название страницы" /></section>
+		</section>
+		<section id="maincont">
+				<section class="form_row">
+					<section class="label">H1:</section>
+					<section class="row"><input type="text" name="url" value="" placeholder="H1 заголовок для страницы" /></section>
+				</section>
+
+				<section class="form_row">
+					<section class="label">Раздел:</section>
+					<section class="row">
+						<select name="razdel" style="width:200px;">
+
+						</select>
+					</section>
+				</section>
+
+				<section class="form_row">
+					<section class="label">Тип:</section>
+					<section class="row">
+						<select name="type" style="width:200px;">
+							<option>Раздел</option>
+							<option>Страница</option>
+						</select>
+					</section>
+				</section>
+		</section>
+		<section id="advanced">
+				<section class="form_row">
+					<section class="label">Краткое описание:</section>
+					<section class="row">
+						<textarea name="short_text" placeholder="Краткое описание на странице" id="shortnews"></textarea>
+					</section>
+				</section>
+
+				<section class="form_row">
+					<section class="label">Краткое описание:</section>
+					<section class="row">
+						<textarea name="full_text" placeholder="Полное описание описание на странице" id="fullnews"></textarea>
+					</section>
+				</section>
+		</section>
+		<section id="seo">
+		</section>
+		<section class="form_row">
+				<section class="row"><input type="submit" name="submit" value="Отправить" /></section>
+		</section>
+</Form>

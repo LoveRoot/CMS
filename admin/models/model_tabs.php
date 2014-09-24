@@ -5,7 +5,7 @@ class model_tabs extends Model {
     public $tabs;
 
     public function __construct() {
-        
+
     }
 
     public function options() {
@@ -22,7 +22,7 @@ class model_tabs extends Model {
                                                    ),
                                    "add" => array(
                                                    0 => array("id" => "#maincont", "name" => "Основное"),
-                                                   1 => array("id" => "#advanced", "name" => "Дополнительно"),
+                                                   1 => array("id" => "#advanced", "name" => "Контент"),
                                                    2 => array("id" => "#seo", "name" => "SEO")
                                                  )
                                   );
