@@ -20,16 +20,16 @@
 
         private static function DBCONNECT(&$error="") {
 						try {
-							self::$link = @mysqli_connect(self::Config("HOST"), /* Адрес базы */ self::Config("DBLOGIN"), /* Имя пользователя */ self::Config("DBPASS"), /* Пароль от базы */ self::Config("DBNAME")); /* Имя базы */
+							self::$link = @mysqli_connect(self::DBConfig("HOST"), /* Адрес базы */ self::DBConfig("DBLOGIN"), /* Имя пользователя */ self::DBConfig("DBPASS"), /* Пароль от базы */ self::DBConfig("DBNAME")); /* Имя базы */
 
             if (!self::$link) {
-								throw new Exception("Ошибка при подключении к базе данных&nbsp;".self::Config("DBNAME")."<br />Возможно вы неверно указали сведения о базе данных в файле engine/mysql_config.ini");
+								throw new Exception("Ошибка при подключении к базе данных&nbsp;".self::DBConfig("DBNAME")."<br />Возможно вы неверно указали сведения о базе данных в файле engine/mysql_DBConfig.ini");
 						}
 
-            self::$select_db = mysqli_select_db(self::$link, self::Config("DBNAME"));
+            self::$select_db = mysqli_select_db(self::$link, self::DBConfig("DBNAME"));
 
             if (!self::$select_db) {
-							throw new Exception("Ошибка при выборе базы данных&nbsp;".self::Config("DBNAME"));
+							throw new Exception("Ошибка при выборе базы данных&nbsp;".self::DBConfig("DBNAME"));
 						}
 
             mysqli_set_charset(self::$link, "utf8");
@@ -45,11 +45,11 @@
 
         private static function MysqliCriticalError($string, $file = "", $line_str = "") {
 
-            if (@mkdir($_SERVER["DOCUMENT_ROOT"] . "/logs")) {
+            if (@mkdir(ROOT_PATH."/logs")) {
 
-                $log_dir = $_SERVER["DOCUMENT_ROOT"] . "/logs/err_logs.txt";
+                $log_dir = ROOT_PATH."/logs/err_logs.txt";
 
-                if (!file_exists($_SERVER["DOCUMENT_ROOT"] . "/logs/err_logs.txt")) {
+                if (!file_exists(ROOT_PATH."/logs/err_logs.txt")) {
                     $fp = fopen($log_dir, "w");
                     $str = "Файл создан:\t" . date("d-m-Y") . "\n\n";
                     fwrite($fp, $str);
@@ -96,10 +96,25 @@
          *
          */
 
-        public static function Config($pos = "") {
-            self::$result = parse_ini_file($_SERVER["DOCUMENT_ROOT"]."/engine/mysql_config.ini");
+        public static function DBConfig($pos = "") {
+            self::$result = parse_ini_file(ROOT_PATH."/engine/mysql_config.ini");
             return self::$result[$pos];
         }
+
+				public static function Config($str = "") {
+					$conf = self::SelectItems("Config",array("config"), "id=1");
+					if ($conf == true) {
+							$deconf = unserialize($conf["config"]);
+							if ((isset($str)) && (!empty($str))) {
+								return $deconf["params"][$str];
+							}	else {
+								die("Передан пустой параметр __FILE__");
+							}
+					}	else {
+						 self::MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
+					}
+
+				}
 
         /* Простой запрос на выборку из базы
          *

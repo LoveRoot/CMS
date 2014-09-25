@@ -11,7 +11,7 @@
 
         public function index_action()
         {
-            $nav_auto = core::Config("rend_cat_auto");
+            $nav_auto = "on";
 
             $this->data['nav'] = $this->model->GetResult(0);
 

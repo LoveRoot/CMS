@@ -10,6 +10,8 @@ class controller_pages extends Controller {
     public function add_action(&$data = array(), &$vParams = array()) {
         $data['title'] = "Создание страницы";
         $data['header'] = "Создание страницы";
+				$data['option'] = $this->model->GetRazdel();
+
         $this->view->GetTemplate("pages/add_page.phtml", "main.phtml", $data);
     }
 

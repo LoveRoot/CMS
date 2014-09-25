@@ -41,7 +41,7 @@
                 echo $include;
             } else
             {
-                echo "Шаблон {$template_view} не найден по адресу " . core::Config("template") . "";
+                echo "Шаблон {$template_view} не найден по адресу /template/".core::Config("template")."/";
             }
         }
 

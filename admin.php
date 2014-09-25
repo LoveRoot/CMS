@@ -1,6 +1,8 @@
 <?php
 		ob_start();
 		error_reporting(E_ALL);
+		define("ROOT_PATH", __DIR__);
+
 		require_once("classes/core.class.php");
 		require_once("classes/model.class.php");
 		require_once("admin/classes/controller.class.php");

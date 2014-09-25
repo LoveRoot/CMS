@@ -91,6 +91,11 @@
          * Настройки сайта
          */
 
+				public static function Config($string) {
+						$config = Model::Config($string);
+						return $config;
+				}
+
 				public static function ParseUrl($url="") {
 					$path = parse_url($url);
 					return $path['path'];
@@ -102,11 +107,7 @@
 					return unserialize($string);
 				}
 
-				public static function Config($str)
-        {
-            $ini = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/engine/config.ini");
-            return $ini[$str];
-        }
+
 
         private function __construct()
         {
