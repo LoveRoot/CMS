@@ -62,7 +62,7 @@
 				if (isset($this->category[$p_id])) {
 					foreach ($this->category[$p_id] as $razdel) {
 						$selected = isset($_GET["p_id"]) && $razdel["id"] == $_GET["p_id"]?"selected='selected'":"";
-						$this->pages .= "<option value='{$razdel["id"]}' style='padding-left:{$level}px' {$selected}>{$razdel["name"]}</option>";
+						$this->pages .= "<option value='{$razdel["id"]}' style='margin-left:{$level}px' {$selected}>{$razdel["name"]}</option>";
 
 						$level = $level + 15;
 

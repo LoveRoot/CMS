@@ -87,7 +87,7 @@
 					if($module == "main" && $action == "index") {
 						return "/";
 					}	else {
-						return "/{$module}/{$action}/{$param['id']}";
+						return "?component={$module}&action={$action}&{$param['id']}";
 					}
 
 				}

@@ -1,7 +1,8 @@
-<Form action="" method="POST" enctype="multipart/form-data">
+<Form action="<?=Model::CombineUrl("pages", "submit")?>" method="POST" enctype="multipart/form-data" class="valid">
+		<a href="<?=Model::CombineUrl("pages", "submit")?>">URL</a>
 		<section class="form_row">
 				<section class="label">Заголовок:</section>
-				<section class="row"><input type="text" name="title" value="" placeholder="Заголовок элемента / раздела" /></section>
+				<section class="row"><input type="text" name="title" value="" placeholder="Заголовок элемента / раздела" class="required" data-valid="text"  /></section>
 		</section>
 
 		<section class="form_row">
@@ -49,6 +50,26 @@
 				</section>
 		</section>
 		<section id="seo">
+				<section class="form_row">
+					<section class="label">Заголовок страницы - тег TITLE:</section>
+					<section class="row">
+						<input type="text" name="title" placeholder="Свой заголовок">
+					</section>
+				</section>
+
+				<section class="form_row">
+					<section class="label">Описание страницы - тег DESCRIPTION:</section>
+					<section class="row">
+						<textarea name="description" placeholder="Описание страницы" style="height:80px;"></textarea>
+					</section>
+				</section>
+
+				<section class="form_row">
+					<section class="label">Ключевые слова - тег KEYWORDS:</section>
+					<section class="row">
+						<textarea name="description" placeholder="Ключевые слова" style="height:80px;"></textarea>
+					</section>
+				</section>
 		</section>
 		<section class="form_row">
 				<section class="row"><input type="submit" name="submit" value="Отправить" /></section>

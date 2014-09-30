@@ -11,6 +11,34 @@ a {
     color:#666666;
 }
 
+p.desc {
+	font-size:80%;
+	padding:8px 20px;
+	margin:0;
+	background:url("/admin/engine/images/other/16/warn.png") no-repeat left center;
+	color:#F79537;
+}
+
+a.article {
+	background:url("/admin/engine/images/other/24/news.png") no-repeat left top;
+}
+
+a.video {
+	background:url("/admin/engine/images/other/24/video.png") no-repeat left top;
+}
+
+a.gallery {
+	background:url("/admin/engine/images/other/24/gallery.png") no-repeat left top;
+}
+
+a.html {
+	background:url("/admin/engine/images/other/24/html.png") no-repeat left top;
+}
+
+a.faq {
+	background:url("/admin/engine/images/other/24/faq.png") no-repeat left top;
+}
+
 * {
     border:0;
 }
@@ -313,6 +341,7 @@ input[type=checkbox]:checked + label:before {
 #page_create ul li a {
     text-decoration:none;
     color:#362935;
+		padding:3px 30px;
 }
 
 #page_create #leftcol {
