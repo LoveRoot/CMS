@@ -7,7 +7,7 @@ class controller_options extends Controller {
         $this->model = new model_options();
     }
 
-    public function save_conf_action($data = array(), $vParams = array()) {
+    public function save_conf_action(&$data = array(), &$vParams = array()) {
         $vParams = $_POST;
 
         $result = $this->model->SaveConf($vParams);

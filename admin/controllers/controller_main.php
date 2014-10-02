@@ -10,7 +10,7 @@
 			header("Location: /admin.php");
 		}
 
-		public function index_action(&$data="") {
+		public function index_action(&$data="", &$vParams = array()) {
  			if (isset($_COOKIE["user"]) && !empty($_COOKIE["user"])) {
 				$data['title'] = "Панель управления сайтом";
 				$this->view->GetTemplate("index_content.phtml","main.phtml", $data);

@@ -7,7 +7,7 @@ class controller_tabs extends Controller {
         $this->model = core::GetFactory("admin/models/", "model_tabs");
     }
 
-    public function index_action(&$data = "") {
+    public function index_action(&$data = "", &$vParams = array()) {
         if (isset($_GET["component"])) {
             $component = core::Vanish($_GET["component"]);
 

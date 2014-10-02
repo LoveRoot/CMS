@@ -1,24 +1,24 @@
-<Form action="<?=Model::CombineUrl("pages", "submit")?>" method="POST" enctype="multipart/form-data" class="valid">
-		<a href="<?=Model::CombineUrl("pages", "submit")?>">URL</a>
+<Form action="<?=Model::CombineUrl("pages", "add", array("type" => $_GET["type"], "p_id" => $_GET["p_id"]))?>" method="POST" enctype="multipart/form-data" class="valid">
 		<section class="form_row">
 				<section class="label">Заголовок:</section>
-				<section class="row"><input type="text" name="title" value="" placeholder="Заголовок элемента / раздела" class="required" data-valid="text"  /></section>
+				<section class="row"><input type="text" name="name" class="required" value="<?=!empty($params["name"]) ? $params["name"] : ""?>" /></section>
 		</section>
 
 		<section class="form_row">
 				<section class="label">Ссылка / Урл:</section>
-				<section class="row"><input type="text" name="url" value="" placeholder="Ссылочное название страницы" /></section>
+				<section class="row"><input type="text" name="url" value="<?=!empty($params["url"]) ? $params["url"] : ""?>" /></section>
 		</section>
 		<section id="maincont">
 				<section class="form_row">
 					<section class="label">H1:</section>
-					<section class="row"><input type="text" name="url" value="" placeholder="H1 заголовок для страницы" /></section>
+					<section class="row"><input type="text" name="h1" value="<?=!empty($params["h1"]) ? $params["h1"] : ""?>" /></section>
 				</section>
 
 				<section class="form_row">
 					<section class="label">Раздел:</section>
 					<section class="row">
 						<select name="razdel" style="width:200px;">
+							<option value='0' style='font-weight:bold'>-- Новый раздел --</option>
 							<?=$option?>
 						</select>
 					</section>
@@ -38,14 +38,14 @@
 				<section class="form_row">
 					<section class="label">Краткое описание:</section>
 					<section class="row">
-						<textarea name="short_text" placeholder="Краткое описание на странице" class="tiny"></textarea>
+						<textarea name="short_text" class="tiny"><?=!empty($params["short_text"]) ? $params["short_text"] : ""?></textarea>
 					</section>
 				</section>
 
 				<section class="form_row">
 					<section class="label">Полное описание:</section>
 					<section class="row">
-						<textarea name="full_text" placeholder="Полное описание описание на странице" class="tiny"></textarea>
+						<textarea name="full_text" class="tiny"><?=!empty($params["full_text"]) ? $params["full_text"] : ""?></textarea>
 					</section>
 				</section>
 		</section>
@@ -53,25 +53,25 @@
 				<section class="form_row">
 					<section class="label">Заголовок страницы - тег TITLE:</section>
 					<section class="row">
-						<input type="text" name="title" placeholder="Свой заголовок">
+						<input type="text" name="title" value="<?=!empty($params["title"]) ? $params["title"] : ""?>" />
 					</section>
 				</section>
 
 				<section class="form_row">
 					<section class="label">Описание страницы - тег DESCRIPTION:</section>
 					<section class="row">
-						<textarea name="description" placeholder="Описание страницы" style="height:80px;"></textarea>
+						<textarea name="description" style="height:80px;"><?=!empty($params["description"]) ? $params["description"] : ""?></textarea>
 					</section>
 				</section>
 
 				<section class="form_row">
 					<section class="label">Ключевые слова - тег KEYWORDS:</section>
 					<section class="row">
-						<textarea name="description" placeholder="Ключевые слова" style="height:80px;"></textarea>
+						<textarea name="keywords" style="height:80px;"><?=!empty($params["keywords"]) ? $params["keywords"] : ""?></textarea>
 					</section>
 				</section>
 		</section>
 		<section class="form_row">
-				<section class="row"><input type="submit" name="submit" value="Отправить" /></section>
+				<section class="row"><input type="submit" name="submit" value="Отправить"></section>
 		</section>
 </Form>

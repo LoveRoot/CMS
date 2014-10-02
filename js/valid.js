@@ -14,7 +14,7 @@ function property_script(obj) {
 }
 
 function reg_valid(type) {
-	var text = /[a-z0-9-_.\/]/i;
+	var text = /[a-zа-я0-9-_.\/]/i;
 
 	switch(type) {
 		case "text":
@@ -26,13 +26,18 @@ function reg_valid(type) {
 function input_text(obj, eventForm) {
 	var length = $(obj).val().length;
 	var type_row = $(obj).data("valid");
+
+	if (!type_row) {
+		type_row = "text";
+	}
+
 	var reg = reg_valid(type_row);
 
 	$(obj).next("p.desc").remove();
 
 	if (reg.test($(obj).val()) === false) {
 		property_script(obj);
-		$(obj).after("<p class='desc'>Это поле обязательно для заполнения, возможно в ваше тексте содержатся запрещённые символы.</p>");
+		$(obj).after("<p class='desc'>Это поле обязательно для заполнения, возможно в вашем тексте содержатся запрещённые символы.</p>");
 		eventForm.preventDefault();
 	}
 }

@@ -11,6 +11,11 @@ class controller_pages extends Controller {
         $data['title'] = "Создание страницы";
         $data['header'] = "Создание страницы";
 				$data['option'] = $this->model->GetRazdel();
+				$data["params"] = $vParams;
+
+				if (isset($vParams["submit"])) {
+					
+				}
 
         $this->view->GetTemplate("pages/add_page.phtml", "main.phtml", $data);
     }

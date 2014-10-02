@@ -5,7 +5,7 @@
 			$this->model =  core::GetFactory("admin/models/","model_authorize");
 		}
 
-		public function index_action(&$data="") {
+		public function index_action(&$data="", &$vParams = array()) {
 			 if (isset($_POST["login"])) {
 				 $login = core::Vanish($_POST["user"]);
 				 $password = $_POST["password"];

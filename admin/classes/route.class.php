@@ -47,7 +47,7 @@ class Route {
             }
 
             if (!empty($expl[0]) && count($route) > 2) {
-                self::$params["param"][$expl[0]] = $expl[1];
+                self::$params["param"] = $_REQUEST;
             }
         }
 
@@ -73,7 +73,7 @@ class Route {
         $action = $action_name;
 
         if (method_exists($controller, $action)) {
-            $controller->$action($data = array(), self::$params);
+            $controller->$action($data = array(), self::$params["param"]);
         } else {
             Route::ErrorPage404();
         }

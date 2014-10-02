@@ -79,17 +79,23 @@
 				 */
 
 				public static function CombineUrl($module="",$action="", $param = array()) {
+					$params = "";
 					if (empty($module))
 						$module = "main";
 					if (empty($action))
 						$module = "index";
 
+					if (!empty($param)) {
+							foreach($param as $p => $value) {
+								$params .= "&{$p}={$value}";
+							}
+					}
+
 					if($module == "main" && $action == "index") {
 						return "/";
 					}	else {
-						return "?component={$module}&action={$action}&{$param['id']}";
+						return $_SERVER["PHP_SELF"]."?component={$module}&action={$action}{$params}";
 					}
-
 				}
 
         /* Настройки сайта
