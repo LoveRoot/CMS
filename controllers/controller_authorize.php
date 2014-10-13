@@ -21,7 +21,7 @@
                 $this->model_authorize->Logout();
             }
 
-            $status_enable = $this->DefaultConfig("site_status");
+            $status_enable = Model::Config("site_status");
 
             if ($status_enable == "on") {
                 Model::Redirect301("/siteoff/");

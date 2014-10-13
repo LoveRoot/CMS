@@ -1,9 +1,9 @@
 <?php if (isset($action) && !empty($tabs[$action])) { ?>
     <ul id="tabs">
         <?php foreach ($tabs[$action] as $i => $item) { ?>
-                
-               <li><a href="<?= $item["id"] ?>"><?=$item["name"] ?></a></li>
-
+						<?php foreach($item[$type] as $tab) { ?>
+								<li><a href="<?=$tab["id"] ?>"><?=$tab["name"] ?></a></li>
+						<?php } ?>
         <?php } ?>
     </ul>
 <?php } ?>

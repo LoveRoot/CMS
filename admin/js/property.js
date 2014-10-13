@@ -1,3 +1,7 @@
+function confirm(obj) {
+	e.preventDefault();
+}
+
 function close() {
 	$("#property").remove();
 	$("#shadow").fadeOut(200);
@@ -24,7 +28,7 @@ function open_property(event, obj, id) {
 	$("<li><a href='javascript:popup(\"Выберите тип страницы\",\"/admin/template/pages/win_property.phtml\", 450, "+id+");'>Добавить страницу / каталог</a></li>").appendTo("#property-content ul");
 	$("<li><a href='/admin.php?component="+getComponent[1]+"&action=property&id="+id+"'>Параметры</a></li>").appendTo("#property-content ul");
 	$("<li><a href='/admin.php?component="+getComponent[1]+"&action=elements&id="+id+"'>Элементы</a></li>").appendTo("#property-content ul");
-	$("<li><a href='/admin.php?component="+getComponent[1]+"&action=delete&id="+id+"'>Удалить</a></li>").appendTo("#property-content ul");
+	$("<li><a onclick='confirm(this);' href='/admin.php?component="+getComponent[1]+"&action=delete&id="+id+"'>Удалить</a></li>").appendTo("#property-content ul");
 
 }
 
