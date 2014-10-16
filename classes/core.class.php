@@ -36,8 +36,7 @@
             {
                 ob_start();
                 include $filename;
-                $contents = ob_get_contents();
-                ob_end_clean();
+                $contents = ob_get_clean();
                 return $contents;
             } else
             {

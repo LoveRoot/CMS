@@ -1,1 +1,68 @@
-Страница статьи
+<section id="maincont">
+	<section class="form_row">
+		<section class="label">Заголовок:</section>
+		<section class="row"><input type="text" name="name" class="required" value="<?=!empty($params["name"]) ? $params["name"] : !empty($data["name"]) ? $data["name"] : "" ?>" /></section>
+	</section>
+
+	<section class="form_row">
+		<section class="label">Ссылка / Урл:</section>
+		<section class="row"><input type="text" name="url" value="<?= !empty($params["url"]) ? $params["url"] : !empty($data["url"]) ? $data["url"] : "" ?>" /></section>
+	</section>
+
+	<section class="form_row">
+		<section class="label">H1:</section>
+		<section class="row"><input type="text" name="h1" value="<?= !empty($params["h1"]) ? $params["h1"] : !empty($data["h1"]) ? $data["h1"] : "" ?>" /></section>
+	</section>
+
+	<?php if (isset($_GET["action"]) && $_GET["action"] == "add") { ?>
+			<section class="form_row">
+				<section class="label">Раздел:</section>
+				<section class="row">
+					<select name="razdel" style="width:200px;">
+						<option value='0' style='font-weight:bold'>-- Новый раздел --</option>
+						<?= $option ?>
+					</select>
+				</section>
+			</section>
+	<?php } ?>
+</section>
+<section id="advanced">
+	<section class="form_row">
+		<section class="label">Краткое описание:</section>
+		<section class="row">
+			<textarea name="short_text" class="tiny"><?= !empty($params["short_text"]) ? $params["short_text"] : !empty($data["short_content"]) ? $data["short_content"] : "" ?></textarea>
+		</section>
+	</section>
+
+	<section class="form_row">
+		<section class="label">Полное описание:</section>
+		<section class="row">
+			<textarea name="full_text" class="tiny"><?= !empty($params["full_text"]) ? $params["full_text"] : !empty($data["full_content"]) ? $data["full_content"] : "" ?></textarea>
+		</section>
+	</section>
+</section>
+<section id="seo">
+	<section class="form_row">
+		<section class="label">Заголовок страницы - тег TITLE:</section>
+		<section class="row">
+			<input type="text" name="title" value="<?= !empty($params["title"]) ? $params["title"] : !empty($data["title"]) ? $data["title"] : "" ?>" />
+		</section>
+	</section>
+
+	<section class="form_row">
+		<section class="label">Описание страницы - тег DESCRIPTION:</section>
+		<section class="row">
+			<textarea name="description" style="height:80px;"><?= !empty($params["description"]) ? $params["description"] : !empty($data["description"]) ? $data["description"] : "" ?></textarea>
+		</section>
+	</section>
+
+	<section class="form_row">
+		<section class="label">Ключевые слова - тег KEYWORDS:</section>
+		<section class="row">
+			<textarea name="keywords" style="height:80px;"><?= !empty($params["keywords"]) ? $params["keywords"] : !empty($data["keywords"]) ? $data["keywords"] : "" ?></textarea>
+		</section>
+	</section>
+</section>
+<section class="form_row">
+	<section class="row"><input type="submit" name="submit" value="Отправить"></section>
+</section>

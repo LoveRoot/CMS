@@ -19,7 +19,7 @@ class model_pages extends Model {
         $this->category = $this->Category();
     }
 
-    public function AddPages($array) {
+    public function AddPage($array) {
 
         $add = Model::InsertItems("pages", array(
                                                   "name" => $array["name"],
@@ -45,9 +45,30 @@ class model_pages extends Model {
         }
     }
 
-		public function TypePage($id) {
-			$result = Model::SelectItems("pages", array("page_type"), "id={$id}");
-			return $result["page_type"];
+		public function UpdatePage($array) {
+			$update = Model::UpdateItem("pages", "id={$array["id"]}", array(
+																																			"name" => $array["name"],
+																																			"h1" => $array["h1"],
+																																			"short_content" => $array["short_text"],
+																																			"full_content" => $array["full_text"],
+																																			"status" => 1,
+																																			"title" => $array["title"],
+																																			"keywords" => $array["keywords"],
+																																			"description" => $array["description"],
+																																			"template" => "default",
+																																		 ));
+			 if ($update == true && !empty($array["url"])) {
+            $add_url = Model::InsertItems("url", array("url_name" => $array["url"], "module" => $array["type"], "action" => "index", "p_id" => $array["id"]));
+        }
+
+				if ($update == true) {
+            Model::Redirect301("/admin.php?component=pages&action=index");
+        }
+		}
+
+		public function GetDataPage($id) {
+			$result = Model::SelectItems("pages", array("*"), "id={$id}");
+			return $result;
 		}
 
 		public function Delete($p_id=0) {
@@ -109,7 +130,7 @@ class model_pages extends Model {
         if (isset($this->category[$p_id])) {
 
             foreach ($this->category[$p_id] as $razdel) {
-                $selected = isset($_GET["p_id"]) && $razdel["id"] == $_GET["p_id"] ? "selected='selected'" : "";
+                $selected = isset($_GET["p_id"]) && $razdel["id"] == $_GET["p_id"] ? "selected='selected'" :  "";
                 $this->pages .= "<option value='{$razdel["id"]}' style='margin-left:{$level}px' {$selected}>{$razdel["name"]}</option>";
 
                 $level = $level + 15;
