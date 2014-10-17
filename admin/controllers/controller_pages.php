@@ -40,6 +40,7 @@ class controller_pages extends Controller {
 			$data["data"] = $this->model->GetDataPage($vParams["id"]);
 			$data['title'] = "Элементы страницы - {$data["data"]["name"]}";
       $data['header'] = "Элементы страницы - {$data["data"]["name"]}";
+			$data['type'] = $data["data"]["page_type"];
 
 			$this->view->GetTemplate("pages/elements_page.phtml", "main.phtml", $data);
 		}
