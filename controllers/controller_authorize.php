@@ -28,8 +28,8 @@
             }
         }
 
-        public function index_action(&$data = "")
-        {
+        public function index_action(&$data = array(), &$vParams = array())
+        {            
             if ((!isset($_COOKIE["user"])))
             {
                 $this->view->GetTemplate("main.phtml", "authorize/authorize_form.phtml");

@@ -46,11 +46,11 @@ class Route {
                 $action_name = $route["action"];
             }
 
-            if (!empty($expl[0]) && count($route) > 2) {
+            if (!empty($expl[0]) && count($route) >= 2) {
                self::$params["param"] = isset($_REQUEST) ? $_REQUEST : "";
             } else {
-							 self::$params["param"] = array();
-						}
+		self::$params["param"] = array();
+            }
         }
 
         $model_name = 'model_' . $controller_name;

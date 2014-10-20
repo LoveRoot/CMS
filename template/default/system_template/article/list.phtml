@@ -1,20 +1,29 @@
-<article>
-    <?php do
-            {
-            ?>
-            <section class="news-block">
-                <section class="news-head">
-                    <header>
-                        <h2><?= $news->result["a_title"] ?></h2>
-                    </header>
+<?php if (!empty($page["h1"])) { ?>
+    <header><h1><?=$page["h1"]?></h1></header>
+<?php } ?>
+    
+<?php if (!empty($page["short_content"])) { ?>
+    <?=$page["short_content"]?>
+<?php } ?>
+
+<?php if (!empty($news)) { ?>
+    <article>
+        <?php do
+                {
+                ?>
+                <section class="news-block">
+                    <section class="news-head">
+                        <header>
+                            <h2><?= $news->result["name"] ?></h2>
+                        </header>
+                    </section>
+                    <section class="news-text"><?= $news->result["shortnews"] ?></section>
+                    <section class="read-full"><a href="<?= Model::CombineUrl("article", "fullnews", array("id" => $news->result["id"], "table" => "article")) ?>">Читать полностью</a></section>
                 </section>
-                <section class="news-text"><?= $news->result["shortnews"] ?></section>
-                <section class="read-full"><a href="<?= Model::CombineUrl("article", "fullnews", array("id" => $news->result["id"], "table" => "article")) ?>">Читать полностью</a></section>
-            </section>
-    <?php } while ($news->result = mysqli_fetch_assoc($news->sql)); ?>
-</article>
+        <?php } while ($news->result = mysqli_fetch_assoc($news->sql)); ?>
+    </article>
 
-<section id="pagination">
-	<?=$news->navigation(core::ParseUrl($_SERVER["REQUEST_URI"])."?page=")?>
-</section>
-
+    <section id="pagination">
+        <?=$news->navigation(core::ParseUrl($_SERVER["REQUEST_URI"])."?page=")?>
+    </section>
+<?php } ?>

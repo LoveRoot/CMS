@@ -1,2 +1,29 @@
+<section id="maincont">
+    <header>
+        <h1 class="inline">Список учётных записей</h1>
+    </header>
+    <?php if (!empty($data)) { ?>
+        <section id="users-list">
+            <ul>
+                <?php foreach($data as $user) { ?>
+                    <li><span class="users" href="<?=Model::CombineUrlByAdmin("users", "property", array("id" => $user["id"]))?>"><?=$user["login"]?></span></li>
+                <?php } ?>     
+            </ul>
+        </section>
+        <section id="pagination">
+            <?=$pagination?>
+        </section>
+    <?php } ?>
+</section>
 
+<section id="fast_search">
+    <header>
+        <h1 class="inline">Быстрый поиск</h1>
+    </header>
+</section>
 
+<section id="advance_search">
+     <header>
+        <h1 class="inline">Расширенный поиск</h1>
+    </header>
+</section>

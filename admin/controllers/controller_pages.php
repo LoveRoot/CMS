@@ -7,7 +7,6 @@ class controller_pages extends Controller {
         $this->model = new model_pages();
     }
 
-
     public function add_action(&$data = array(), &$vParams = array()) {
         $data['title'] = "Создание страницы";
         $data['header'] = "Создание страницы";
@@ -15,41 +14,47 @@ class controller_pages extends Controller {
         $data["params"] = $vParams;
 
         if (isset($vParams["submit"])) {
-           $this->model->AddPage($vParams);
+            $this->model->AddPage($vParams);
         }
 
         $this->view->GetTemplate("pages/add_page.phtml", "main.phtml", $data);
     }
 
-		public function property_action(&$data = array(), &$vParams = array()) {
-			$data["data"] = $this->model->GetDataPage($vParams["id"]);
-			$data['title'] = "Свойства страницы - {$data["data"]["name"]}";
-      $data['header'] = "Свойства страницы - {$data["data"]["name"]}";
-			$data['type'] = $data["data"]["page_type"];
-			$data['option'] = $this->model->GetRazdel();
-			$data["params"] = $vParams;
+    public function property_action(&$data = array(), &$vParams = array()) {
+        $data["data"] = $this->model->GetDataPage($vParams["id"]);
+        $data['title'] = "Свойства страницы - {$data["data"]["name"]}";
+        $data['header'] = "Свойства страницы - {$data["data"]["name"]}";
+        $data['type'] = $data["data"]["page_type"];
+        $data['option'] = $this->model->GetRazdel();
+        $data["params"] = $vParams;
+        
+        $url = explode(".", $data["data"]["url"]);
+        $data['url'] = $url[0];
+        
+        if (isset($vParams["submit"])) {
+            $this->model->UpdatePage($vParams);
+        }
 
-			if (isset($vParams["submit"])) {
-           $this->model->UpdatePage($vParams);
-      }
+        $this->view->GetTemplate("pages/property_page.phtml", "main.phtml", $data);
+    }
 
-			$this->view->GetTemplate("pages/property_page.phtml", "main.phtml", $data);
-		}
+    public function elements_action(&$data = array(), &$vParams = array()) {
+        $data['data'] = $this->model->GetDataPage($vParams["id"]);
+        $data['elements'] = $this->model->GetDataElements($vParams["id"]);
+        $data['pagination'] = Pagination::navigation("admin.php?component={$vParams["component"]}&action={$vParams["action"]}&id={$vParams["id"]}&page=");
 
-		public function elements_action(&$data = array(), &$vParams = array()) {
-			$data["data"] = $this->model->GetDataPage($vParams["id"]);
-			$data['title'] = "Элементы страницы - {$data["data"]["name"]}";
-      $data['header'] = "Элементы страницы - {$data["data"]["name"]}";
-			$data['type'] = $data["data"]["page_type"];
+        $data['title'] = "Элементы страницы - {$data["data"]["name"]}";
 
-			$this->view->GetTemplate("pages/elements_page.phtml", "main.phtml", $data);
-		}
+        $data['type'] = $data["data"]["page_type"];
+        
+        $this->view->GetTemplate("pages/elements_page.phtml", "main.phtml", $data);
+    }
 
-		public function delete_action(&$data = array(), &$vParams = array()) {
-			if (isset($vParams["id"])) {
-				$this->model->Delete($vParams["id"]);
-			}
-		}
+    public function delete_action(&$data = array(), &$vParams = array()) {
+        if (isset($vParams["id"])) {
+            $this->model->Delete($vParams["id"]);
+        }
+    }
 
     public function index_action(&$data = array(), &$vParams = array()) {
         $data['title'] = "Список страниц";

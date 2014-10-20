@@ -1,28 +1,26 @@
 <?php
 
-    class controller_navigation extends Controller
-    {
+class controller_navigation extends Controller {
 
-        public function __construct()
-        {
-            parent::__construct();
-            $this->model = core::GetFactory("models/", "model_navigation");
+    public function __construct() {
+
+        $this->model = core::GetFactory("models/", "model_navigation");
+    }
+
+    public function index_action($data=array(), &$vParams = array()) {
+        if ($vParams["id"] !== null) {
+            $id = $vParams["id"];
+        }   else {
+            $id = 1;
         }
+        parent::__construct($id);
 
-        public function index_action()
-        {
-            $nav_auto = "on";
+        $nav_auto = "on";
 
-            $this->data['nav'] = $this->model->GetResult(0);
+        $this->data['nav'] = $this->model->TopNavigation(0);
 
-            $this->view->GetTemplate("main.phtml", "system_template/navigation_auto.phtml", $this->data);
-
-//				if (trim($nav_auto) == "on") {
-//					$this->view->GetTemplate("main.phtml","system_template/navigation_manual.phtml", $this->data);
-//				}	else {
-//
-//					$this->view->GetTemplate("main.phtml","system_template/navigation_auto.phtml", $this->data);
-//				}
-        }
+        $this->view->GetTemplate("main.phtml", "system_template/navigation_auto.phtml", $this->data);
 
     }
+
+}

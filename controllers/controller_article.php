@@ -4,16 +4,13 @@
     {
 
         public function __construct()
-        {
-            parent::__construct();
+        {      
             $this->model = new model_article();
         }
 
-        public function fullnews_action(&$data = array(), $params = null)
+        public function fullnews_action(&$data = array(), $vParams = array())
         {
-            $p_id = $_GET["id"];
-
-            $data = $this->model->ReadNews($p_id);
+            $data = $this->model->ReadNews($vParams["id"]);
 
             $this->data['page'] = $data;
 
@@ -24,11 +21,10 @@
             $this->view->GetTemplate("system_template/article/fullnews.phtml", "main.phtml", $this->data);
         }
 
-        public function index_action(&$data = array(), $params = null)
+        public function index_action(&$data = array(), $vParams = array())
         {
-            $p_id = $_GET["id"];
-
-						$list_news = $this->model->GetNews($p_id);
+            parent::__construct($vParams["id"]);
+            $list_news = $this->model->GetNews($vParams["id"]);
             $this->data['news'] = $list_news;
 
             $this->view->GetTemplate("system_template/article/list.phtml", "main.phtml", $this->data);

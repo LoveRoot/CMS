@@ -18,8 +18,9 @@ class controller_users extends Controller {
     }
     
     public function index_action(&$data=array(), &$vParams = array()) {
-        $data['header'] = "Список учётных записей пользователей";
         $data['title'] = "Учётные записи пользователей";
+        $data['data'] = $this->model->GetUsersList();
+        $data['pagination'] = Pagination::navigation("admin.php?component={$vParams["component"]}&action={$vParams["action"]}&page=");
         $this->view->GetTemplate("users/show_elements.phtml","main.phtml", $data);
     }
 }

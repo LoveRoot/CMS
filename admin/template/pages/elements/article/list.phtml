@@ -1,0 +1,15 @@
+<?php if (!empty($elements)) { ?>
+    <section id="article-list">
+        <ul>
+            <?php foreach($elements as $elm) { ?>
+            <li><a class="users" href="<?=Model::CombineUrlByAdmin("elements", "property", array("id" => $elm["id"]))?>"><?=$elm["name"]?></a></li>
+            <?php } ?>     
+        </ul>
+    </section>
+    <section id="pagination">
+        <?=$pagination?>
+    </section>
+<?php } else { ?>
+    <p>К сожалению список пользователей пуст.</p>
+<?php } ?>
+

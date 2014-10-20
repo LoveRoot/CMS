@@ -19,12 +19,15 @@
             <section id="leftcol">
                 <aside>
                     <section class="box lightblue">
-												<?php include "modules/authorize.php" ?>
+			<?php include "modules/authorize.php" ?>
                     </section>
                 </aside>
             </section>
 
             <section id="content">
+                <section id="breadcrumbs">
+                    <?php include "modules/breadcrumbs.php" ?>
+                </section>
                 <?php include "template/default/".$content_view; ?>
             </section>
         </section>

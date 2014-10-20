@@ -12,9 +12,9 @@
             
         }
 
-        public function GetNews($p_id)
+        public function GetNews($p_id=0)
         {
-
+            $id = intval($p_id);
         }
 
     }

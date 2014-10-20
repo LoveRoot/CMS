@@ -3,40 +3,54 @@ html, body {
     margin:0;
     font-family:arial;
     height:100%;
-		background:#fff;
-		overflow-x:hidden;
+    background:#fff;
+    overflow-x:hidden;
 }
 
 a {
     color:#666666;
+    font-size:105%;
+}
+
+ul {
+    padding:0;
+    margin:0;
+}
+
+ul li {
+    margin-bottom:10px;
 }
 
 p.desc {
-	font-size:80%;
-	padding:8px 20px;
-	margin:0;
-	background:url("/admin/engine/images/other/16/warn.png") no-repeat left center;
-	color:#F79537;
+    font-size:80%;
+    padding:8px 20px;
+    margin:0;
+    background:url("/admin/engine/images/other/16/warn.png") no-repeat left center;
+    color:#F79537;
 }
 
 a.article {
-	background:url("/admin/engine/images/other/24/news.png") no-repeat left top;
+    background:url("/admin/engine/images/other/24/news.png") no-repeat left top;
 }
 
 a.video {
-	background:url("/admin/engine/images/other/24/video.png") no-repeat left top;
+    background:url("/admin/engine/images/other/24/video.png") no-repeat left top;
 }
 
 a.gallery {
-	background:url("/admin/engine/images/other/24/gallery.png") no-repeat left top;
+    background:url("/admin/engine/images/other/24/gallery.png") no-repeat left top;
 }
 
 a.html {
-	background:url("/admin/engine/images/other/24/html.png") no-repeat left top;
+    background:url("/admin/engine/images/other/24/html.png") no-repeat left top;
 }
 
 a.faq {
-	background:url("/admin/engine/images/other/24/faq.png") no-repeat left top;
+    background:url("/admin/engine/images/other/24/faq.png") no-repeat left top;
+}
+
+span.users {
+    background:url("/admin/engine/images/other/24/users.png") no-repeat left top;
 }
 
 * {
@@ -44,64 +58,64 @@ a.faq {
 }
 
 ul {
-	padding:0;
-	margin:0 0 6px;
-	list-style:none;
+    padding:0;
+    margin:0 0 6px;
+    list-style:none;
 }
 
 .inline {
-	padding-bottom:6px;
-  border-bottom:4px solid #379ad3;
-  display:block !important;
+    padding-bottom:6px;
+    border-bottom:4px solid #379ad3;
+    display:block !important;
 }
 
 #header {
-	height:140px;
+    height:140px;
 
 }
 
 #header-inside {
-	width:100%;
+    width:100%;
 }
 
 #control {
-	float:right;
-	width:20%;
+    float:right;
+    width:20%;
 
 }
 
 header h1, header h2, header h3 {
-	padding:0;
-	margin:0 0 8px;
-	font-size:120%;
+    padding:0;
+    margin:0 0 8px;
+    font-size:120%;
 }
 
 #right-col {
-	margin: 0 2% 2% 27%;
+    margin: 0 2% 2% 27%;
 }
 
 #content {
-	padding: 15px 15px 0 15px;
-  background:#F7F7F7;
-	border-left:1px solid #E3E3E3;
-	border-bottom:1px solid #E3E3E3;
-	min-height:100px;
+    padding: 15px 15px 0 15px;
+    background:#F7F7F7;
+    border-left:1px solid #E3E3E3;
+    border-bottom:1px solid #E3E3E3;
+    min-height:100px;
 }
 
 /* Табы */
 
 #tabs {
-
+    height:39px;
 }
 
 #tabs ul {
-	padding:0;
-	margin:0;
+    padding:0;
+    margin:0;
 }
 
 
 #tabs ul li {
-	display:inline-block;
+    display:inline-block;
 }
 
 #tabs ul li#last {
@@ -123,7 +137,7 @@ header h1, header h2, header h3 {
 }
 
 #tabs ul li a:hover {
-		color:#136398 !important;
+    color:#136398 !important;
     border-top:3px solid #44C7F5 !important;
     border-bottom:0;
 }
@@ -136,7 +150,7 @@ header h1, header h2, header h3 {
     color:red !important;
     border-top:3px solid red !important;
     border-bottom:0;
-		font-weight:bold;
+    font-weight:bold;
 }
 
 /* --- */
@@ -144,12 +158,12 @@ header h1, header h2, header h3 {
 /* Форма */
 
 .form_row {
-	margin:0 0 15px;
-	padding:0 20px 0 0px;
+    margin:0 0 15px;
+    padding:0 20px 0 0px;
 }
 
 .label {
-	margin:0 0 6px;
+    margin:0 0 6px;
 }
 
 input[type="submit"], input[type="button"] {
@@ -176,14 +190,18 @@ input[type="submit"]:active, input[type="button"]:active {
 }
 
 input[type="text"], input[type="email"], textarea {
-	padding:8px;
-	width:100%;
-	border:1px solid lightblue;
-	box-shadow: 0px 1px 1px lightblue inset;
+    padding:8px;
+    width:100%;
+    border:1px solid lightblue;
+    box-shadow: 0px 1px 1px lightblue inset;
+    font-size:100%;
 }
 
 select {
-	padding:2px;
+    padding:4px;
+    box-shadow: 0px 1px 1px lightblue inset;
+    background:#fff;
+    width:140px;
 }
 
 label {
@@ -226,7 +244,7 @@ input[type=radio]:checked + label:before {
     text-align: center;
     vertical-align:middle;
     line-height: 16px;
-		font-weight: bold;
+    font-weight: bold;
 }
 
 input[type=checkbox] {
@@ -252,8 +270,8 @@ input[type=checkbox]:checked + label:before {
 /* Авторизация */
 
 #authorize #control {
-	background:url("/admin/engine/images/page/users48.png") no-repeat left top;
-	padding-left:60px;
+    background:url("/admin/engine/images/page/users48.png") no-repeat left top;
+    padding-left:60px;
 }
 
 #login_admin {
@@ -262,7 +280,7 @@ input[type=checkbox]:checked + label:before {
     background:#f2f2f2;
     position:absolute;
     box-shadow:0px 1px 4px 0 #000000;
-		position:absolute;
+    position:absolute;
 }
 
 #login_admin_window {
@@ -292,7 +310,7 @@ input[type=checkbox]:checked + label:before {
 }
 
 #login_admin #login_admin_content input[type="password"] {
-     background:#f0eef0 url("/admin/engine/images/form/password.png") no-repeat 10px 12px !important;
+    background:#f0eef0 url("/admin/engine/images/form/password.png") no-repeat 10px 12px !important;
 }
 
 #login_admin #login_admin_content input[type="submit"] {
@@ -303,9 +321,9 @@ input[type=checkbox]:checked + label:before {
 /* Левая колонка */
 
 #navigation {
-   background:#f7f7f7;
-	 float:left;
-	 width:25%;
+    background:#f7f7f7;
+    float:left;
+    width:25%;
 }
 
 #navigation ul {
@@ -343,7 +361,7 @@ input[type=checkbox]:checked + label:before {
 #page_create ul li a {
     text-decoration:none;
     color:#362935;
-		padding:3px 30px;
+    padding:3px 30px;
 }
 
 #page_create #leftcol {
@@ -361,61 +379,68 @@ input[type=checkbox]:checked + label:before {
 
 /* Контроллер pages */
 
-		/* Список страниц */
+/* Список страниц */
 
-		#pages ul li ul {
-			margin:2px 20px 2px;
-		}
+#pages ul li ul {
+    margin:2px 20px 2px;
+}
 
-		#pages ul li {
-			margin:10px 0;
-		}
+#pages ul li {
+    margin:10px 0;
+}
 
-		#pages ul li a {
-			padding:4px 0 0 30px;
-			text-decoration:none;
-			font-size:95%;
-		}
+#pages ul li a {
+    padding:4px 0 0 30px;
+    text-decoration:none;
+    font-size:95%;
+}
 
-		#pages ul li a.invisible {
-			color:rgba(102,121,160, 0.6);
-		}
+#pages ul li a.invisible {
+    color:rgba(102,121,160, 0.6);
+}
 
-		#pages ul li a.main {
-			background:url("/admin/engine/images/other/24/home.png") no-repeat left center;
-		}
+#pages ul li a.main {
+    background:url("/admin/engine/images/other/24/home.png") no-repeat left center;
+}
 
-		#pages ul li a.news {
-			background:url("/admin/engine/images/other/24/news.png") no-repeat left center;
-		}
+#pages ul li a.news {
+    background:url("/admin/engine/images/other/24/news.png") no-repeat left center;
+}
 
-		#pages ul li a.html {
-			background:url("/admin/engine/images/other/24/html.png") no-repeat left center;
-		}
-
-		/* -- */
+#pages ul li a.html {
+    background:url("/admin/engine/images/other/24/html.png") no-repeat left center;
+}
 
 /* -- */
+
+/* -- */
+
+/* учётные записи */
+
+#users-list ul li span {
+    padding-left:30px;
+    font-size:105%;
+}
 
 /* Системные сообщения */
 
 #system_message_error {
-	position:absolute;
-	z-index: 100;
-	background:rgba(36,190,232, 0.8);
-	padding:10px;
-	width:50%;
-	left:25%;
-	color:#fff;
-	border:1px solid #F8E905;
-	border-top:0;
+    position:absolute;
+    z-index: 100;
+    background:rgba(36,190,232, 0.8);
+    padding:10px;
+    width:50%;
+    left:25%;
+    color:#fff;
+    border:1px solid #F8E905;
+    border-top:0;
 
 }
 
 #system_message_error #close {
-	float:right;
-	width:16px;
-	height:16px;
+    float:right;
+    width:16px;
+    height:16px;
 }
 
 #shadow {
@@ -434,50 +459,50 @@ input[type=checkbox]:checked + label:before {
 }
 
 #load_page {
-	position:absolute;
-	width:auto;
-	z-index:1000000;
-	color:#fff;
-	font-size:140%;
+    position:absolute;
+    width:auto;
+    z-index:1000000;
+    color:#fff;
+    font-size:140%;
 }
 
 #ajax {
-	text-transform:UpperCase;
-	color:#000;
+    text-transform:UpperCase;
+    color:#000;
 }
 
 // Дополнительные окна
 
 #property {
-	border:1px solid #000000;
-	width:290px;
-	padding:10px;
-	min-height:40px;
+    border:1px solid #000000;
+    width:290px;
+    padding:10px;
+    min-height:40px;
 }
 
 #property #property-content {
-	border:2px solid #0B73C9;
-	padding:10px;
-	background:#fff;
+    border:2px solid #0B73C9;
+    padding:10px;
+    background:#fff;
 }
 
 #property #property-content ul li {
-	margin-bottom:10px;
+    margin-bottom:10px;
 }
 
 #property #property-content ul li a {
-	text-transform:UpperCase;
-	text-decoration:none;
+    text-transform:UpperCase;
+    text-decoration:none;
 }
 
 #property a#close_window {
-	 background: url("/admin/engine/images/button/close.png") no-repeat scroll left top rgba(0, 0, 0, 0);
-   cursor: pointer;
-   height: 32px;
-   position: absolute;
-   right: -3px;
-   top: -32px;
-   width: 32px;
+    background: url("/admin/engine/images/button/close.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 32px;
+    position: absolute;
+    right: -3px;
+    top: -32px;
+    width: 32px;
 }
 
 /* Модальное окно */
@@ -491,8 +516,8 @@ input[type=checkbox]:checked + label:before {
 
 #top-section {
     overflow:hidden;
-		background:transparent;
-		padding:5px;
+    background:transparent;
+    padding:5px;
 }
 
 #modal_window #title {
@@ -511,9 +536,9 @@ input[type=checkbox]:checked + label:before {
 #modal_window #modal_window_content {
     min-height:60px;
     overflow:hidden;
-		background:#fff;
-		border:2px solid #EBEBEB;
-		padding:10px;
+    background:#fff;
+    border:2px solid #EBEBEB;
+    padding:10px;
 }
 
 #modal_window #close {
@@ -521,4 +546,24 @@ input[type=checkbox]:checked + label:before {
     right: 0;
     top: 0;
     width: 24px;
+}
+
+/* Постраничная навигация */
+
+#pagination {
+    margin:10px 0 10px;
+}
+
+#pagination a {
+    padding:4px;
+    font-size:110%;
+    background-color:#379ad3;
+    display:inline-block;
+    margin-right:5px;
+    text-decoration:none;
+    color:#fff;
+}
+
+#pagination a.active {
+    background-color:red;
 }

@@ -5,38 +5,9 @@
 
 <section id="maincont">
     <section class="form_row">
-        <section class="label">Ссылка / Урл:</section>
-        <section class="row"><input type="text" name="url" value="<?= !empty($params["url"]) ? $params["url"] : !empty($url) ? $url : "" ?>" /></section>
-    </section>
-
-    <section class="form_row">
         <section class="label">H1:</section>
         <section class="row"><input type="text" name="h1" value="<?= !empty($params["h1"]) ? $params["h1"] : !empty($data["h1"]) ? $data["h1"] : "" ?>" /></section>
     </section>
-
-    <?php if (isset($_GET["action"]) && $_GET["action"] == "add") { ?>
-        <section class="form_row">
-            <section class="label">Раздел:</section>
-            <section class="row">
-                <select name="razdel" style="width:200px;">
-                    <option value='0' style='font-weight:bold'>-- Новый раздел --</option>
-                    <?= $option ?>
-                </select>
-            </section>
-        </section>
-    <?php } ?>
-
-    <section class="form_row">
-        <section class="label">Статус раздела:</section>
-        <section class="row">
-            <select name="status">
-               <option value="1" <?=isset($data["status"]) && $data["status"] == 1 ? "selected='selected'":""?>>Включено</option>
-               <option value="0" <?=isset($data["status"]) && $data["status"] == 0 ? "selected='selected'":""?>>Отключено</option>
-            </select>
-        </section>
-    </section>
-</section>
-<section id="advanced">
     <section class="form_row">
         <section class="label">Содержание страницы:</section>
         <section class="row">
@@ -44,6 +15,7 @@
         </section>
     </section>
 </section>
+
 <section id="seo">
     <section class="form_row">
         <section class="label">Заголовок страницы - тег TITLE:</section>

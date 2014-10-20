@@ -2,41 +2,63 @@
 
     class Pagination
     {
+        private static $instance;
+        static $count, $res99, $posts, $total, $page, $start, $sql, $result;
 
-        public function __construct($request = "", $count_sql = "", $num = 0)
+        public static function I()
         {
-						$this->count = $num;
-
-            $this->res99 = mysqli_query(Model::$link, "{$count_sql}");
-            $this->posts = mysqli_num_rows($this->res99);
-
-            $this->total = @intval(($this->posts - 1) / $num) + 1;
-            $this->page = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
-
-            if (empty($this->page) or $this->page < 0)
-                $this->page = 1;
-            if ($this->page > $this->total)
-                $this->page = $this->total;
-
-            $this->start = $this->page * $num - $num;
-            $this->sql = mysqli_query(Model::$link, "{$request} LIMIT $this->start, $num");
-            $this->result = mysqli_fetch_assoc($this->sql);
+            if (!(self::$instance instanceof self))
+            {
+                self::$instance = new self();
+            }
+            return self::$instance;
         }
+        
+        public static function SetPagination($request = "", $count_sql = "", $num = 10) {
+            $data = array();
+            
+            self::$count = $num;
+           
+            self::$res99 = mysqli_query(Model::$link, "{$count_sql}");
+            self::$posts = mysqli_num_rows(self::$res99);
 
-        public function navigation($url_target)
+            self::$total = @intval((self::$posts - 1) / $num) + 1;
+            self::$page = isset($_GET["page"]) ? intval($_GET["page"]) : 1;
+
+            if (empty(self::$page) or self::$page < 0)
+                self::$page = 1;
+            if (self::$page > self::$total)
+                self::$page = self::$total;
+
+            $start = self::$page * $num - $num;
+            
+            self::$result = Model::QueryString("{$request} LIMIT {$start}, {$num}");
+            if (self::$result == true) {
+                do
+                {
+                   $data[] = self::$result;
+                } while(self::$result = mysqli_fetch_assoc(Model::$query));
+            }
+
+            return $data;
+        }
+        
+        public static function navigation($url_target)
         {
-						$pages = "";
+            $pages = "";
             $url = $url_target;
 
-            for($i=1; $i <= $this->total; ++$i) {
-							$class = $i == $this->page ? "active":"";
-							$pages .= "<a class='{$class}' href=".$url.($i).">".$i."</a>";
-						}
+            for($i=1; $i <= self::$total; ++$i) {
+		$class = $i == self::$page ? "active":"";
+		$pages .= "<a class='{$class}' href=".$url.($i).">".$i."</a>";
+            }
 
-            if ($this->posts > $this->count) {
+            if (self::$posts > self::$count) {
                 return $pages;
             }
         }
+        
+        private function __construct() {}
 
     }
 

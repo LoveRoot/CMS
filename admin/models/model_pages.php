@@ -22,22 +22,21 @@ class model_pages extends Model {
     public function AddPage($array) {
 
         $add = Model::InsertItems("pages", array(
-                                                  "name" => $array["name"],
-                                                  "h1" => $array["h1"],
-                                                  "short_content" => $array["short_text"],
-                                                  "full_content" => $array["full_text"],
-                                                  "status" => 1,
-                                                  "is_catalog" => 1,
-                                                  "page_type" => $array["type"],
-                                                  "title" => $array["title"],
-                                                  "keywords" => $array["keywords"],
-                                                  "description" => $array["description"],
-                                                  "template" => "default",
-                                                  "p_id" => $array["p_id"]
-                                                ));
+                    "name" => $array["name"],
+                    "h1" => $array["h1"],
+                    "short_content" => $array["short_text"],
+                    "status" => 1,
+                    "is_catalog" => 1,
+                    "page_type" => $array["type"],
+                    "title" => $array["title"],
+                    "keywords" => $array["keywords"],
+                    "description" => $array["description"],
+                    "template" => "default",
+                    "p_id" => $array["p_id"]
+        ));
 
         if ($add == true && !empty($array["url"])) {
-            $add_url = Model::InsertItems("url", array("url_name" => $array["url"], "module" => $array["type"], "action" => "index", "p_id" => $add));
+            $add_url = Model::InsertItems("url", array("url" => $array["url"].".html", "module" => $array["type"], "action" => "index", "p_id" => $add));
         }
 
         if ($add == true) {
@@ -45,46 +44,53 @@ class model_pages extends Model {
         }
     }
 
-		public function UpdatePage($array) {
-			$update = Model::UpdateItem("pages", "id={$array["id"]}", array(
-																																			"name" => $array["name"],
-																																			"h1" => $array["h1"],
-																																			"short_content" => $array["short_text"],
-																																			"full_content" => $array["full_text"],
-																																			"status" => 1,
-																																			"title" => $array["title"],
-																																			"keywords" => $array["keywords"],
-																																			"description" => $array["description"],
-																																			"template" => "default",
-																																		 ));
-			 if ($update == true && !empty($array["url"])) {
-            $add_url = Model::InsertItems("url", array("url_name" => $array["url"], "module" => $array["type"], "action" => "index", "p_id" => $array["id"]));
+    public function UpdatePage($array) {
+        $update = Model::UpdateItem("pages", "id={$array["id"]}", array(
+                                             "name" => $array["name"],
+                                             "h1" => $array["h1"],
+                                             "short_content" => $array["short_text"],
+                                             "status" => $array["status"],
+                                             "title" => $array["title"],
+                                             "keywords" => $array["keywords"],
+                                             "description" => $array["description"],
+                                             "template" => "default",
+        ));
+        if ($update == true && !empty($array["url"])) {
+              $add_url = Model::InsertItems("url", array("url" => $array["url"].".html", "module" => $array["type"], "action" => "index", "p_id" => $array["id"]));
+              if ($add_url == false) {
+                  $update_url = Model::UpdateItem("url", "p_id = {$array["id"]}", array("url" => $array["url"].".html"));
+              }
         }
 
-				if ($update == true) {
+        if ($update == true) {
             Model::Redirect301("/admin.php?component=pages&action=index");
         }
-		}
+    }
 
-		public function GetDataPage($id) {
-			$result = Model::SelectItems("pages", array("*"), "id={$id}");
-			return $result;
-		}
+    public function GetDataPage($id) {
+        $result = Model::QueryString("SELECT p.*, u.url FROM pages p LEFT JOIN url u ON p.id = u.p_id WHERE p.id = {$id}");
+        return $result;
+    }
 
-		public function Delete($p_id=0) {
-			$sql = Model::DeleteItem("pages","id='{$p_id}' and system = 0");
-			if (isset($this->category[$p_id]))
-      {
-          foreach ($this->category[$p_id] as $object)
-          {
-            $sql = Model::DeleteItem("pages","id='".$object["id"]."' and system = 0");
-            $this->Delete($object["id"]);
-          }
-      }	else {
-				Model::Redirect301($_SERVER["HTTP_REFERER"]);
-			}
+    public function GetDataElements($id=1) {
+        $result = Pagination::SetPagination("SELECT name, status, id FROM pages WHERE p_id = {$id} and is_catalog = 0",
+                                            "SELECT id FROM pages WHERE p_id = {$id} and is_catalog = 0", 15);
+        return $result;
+    }
 
-		}
+    public function Delete($p_id = 0) {
+        $sql = Model::DeleteItem("pages", "id='{$p_id}' and system = 0");
+				$del_url = Model::DeleteItem("url", "p_id='{$p_id}'");
+        if (isset($this->category[$p_id])) {
+            foreach ($this->category[$p_id] as $object) {
+                $sql = Model::DeleteItem("pages", "id='" . $object["id"] . "' and system = 0");
+								$del_url = Model::DeleteItem("url", "p_id='{$p_id}'");
+                $this->Delete($object["id"]);
+            }
+        } else {
+            Model::Redirect301($_SERVER["HTTP_REFERER"]);
+        }
+    }
 
     public function Category() {
         $result = Model::QueryString("Select id, p_id, name, status, page_type, is_catalog, system From pages WHERE is_catalog = 1 ORDER By sort");
@@ -130,7 +136,7 @@ class model_pages extends Model {
         if (isset($this->category[$p_id])) {
 
             foreach ($this->category[$p_id] as $razdel) {
-                $selected = isset($_GET["p_id"]) && $razdel["id"] == $_GET["p_id"] ? "selected='selected'" :  "";
+                $selected = isset($_GET["p_id"]) && $razdel["id"] == $_GET["p_id"] ? "selected='selected'" : "";
                 $this->pages .= "<option value='{$razdel["id"]}' style='margin-left:{$level}px' {$selected}>{$razdel["name"]}</option>";
 
                 $level = $level + 15;

@@ -1,3 +1,3 @@
-<Form action="<?= Model::CombineUrl("pages", "add", array("type" => $_GET["type"], "p_id" => $_GET["p_id"])) ?>" method="POST" enctype="multipart/form-data" class="valid">
+<Form action="<?= Model::CombineUrlByAdmin("pages", "add", array("type" => $_GET["type"], "p_id" => $_GET["p_id"])) ?>" method="POST" enctype="multipart/form-data" class="valid">
 	<?php include("type_page/{$_GET["type"]}.phtml")?>
 </Form>

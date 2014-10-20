@@ -53,16 +53,16 @@ class Model {
                 $fp = fopen($log_dir, "w");
                 $str = "Файл создан:\t" . date("d-m-Y") . "\n\n";
                 fwrite($fp, $str);
-                fwrite($fp, date("d-m-Y") . "\n" . "Ошибка:\t" . $string . "\n" . "Файл:\t" . $file . "\n" . "Строка:\t" . $line_str . "\n\n");
+                fwrite($fp, date("d-m-Y") . "\r\n" . "Ошибка:\t" . $string . "\r\n" . "Файл:\t" . $file . "\r\n" . "Строка:\t" . $line_str . "\r\n");
                 fclose($fp);
             } else {
                 $fp = fopen($log_dir, "a");
-                fwrite($fp, date("d-m-Y") . "\n" . "Ошибка:\t" . $string . "\n" . "Файл:\t" . $file . "\n" . "Строка:\t" . $line_str . "\n\n");
+                fwrite($fp, date("d-m-Y") . "\r\n" . "Ошибка:\t" . $string . "\r\n" . "Файл:\t" . $file . "\r\n" . "Строка:\t" . $line_str . "\r\n");
                 fclose($fp);
             }
         }
 
-        die(core::GetSystemError("Произошла критическая ошибка при запросе к базе данных:&nbsp;" . $string));
+        echo core::GetSystemError("Произошла критическая ошибка при запросе к базе данных:&nbsp;" . $string);
     }
 
     /*
@@ -91,10 +91,43 @@ class Model {
             }
         }
 
+        $url = Model::SelectItems("url", array("url"), "p_id={$param["id"]}");
+
+
         if ($module == "main" && $action == "index") {
             return "/";
         } else {
-            return $_SERVER["PHP_SELF"] . "?component={$module}&action={$action}{$params}";
+            if ($url == true) {
+                return "/{$url["url"]}";
+            }  else {
+                return $_SERVER["PHP_SELF"] . "?component={$module}&action={$action}{$params}";
+            }
+
+        }
+    }
+
+    /*
+     * Собрать URL для admin
+     */
+
+    public static function CombineUrlByAdmin($module = "", $action = "", $params = array()) {
+				$param = "";
+
+        if (empty($module))
+            $module = "main";
+        if (empty($action))
+            $module = "index";
+
+        if (!empty($params)) {
+            foreach ($params as $p => $value) {
+                $param .= "&{$p}={$value}";
+            }
+        }
+
+        if ($module == "main" && $action == "index") {
+            return "/";
+        } else {
+            return $_SERVER["PHP_SELF"]."?component={$module}&action={$action}{$param}";
         }
     }
 
@@ -112,7 +145,7 @@ class Model {
         if ($conf == true) {
             $deconf = unserialize($conf["config"]);
             if ((isset($str)) && (!empty($str))) {
-                return $deconf["params"]["{$str}"];
+                return @$deconf["params"]["{$str}"];
             } else {
                 die("Передан пустой параметр __FILE__");
             }
@@ -121,7 +154,7 @@ class Model {
         }
     }
 
-    /* Простой запрос на выборку из базы
+    /* Строковой запрос
      *
      */
 
@@ -135,7 +168,7 @@ class Model {
         }
     }
 
-    /* Добавление в базу данных
+    /* Добавление в ДБ
      *
      */
 
@@ -189,6 +222,10 @@ class Model {
             self::MysqliCriticalError(mysqli_error(self::$link), __DIR__ . "/" . __FILE__, __LINE__);
         }
     }
+
+		/*
+		 * Удаление из ДБ
+		 */
 
     public function DeleteItem($table, $where) {
         self::$query = mysqli_query(self::$link, "DELETE FROM {$table} WHERE {$where}");
